@@ -240,6 +240,11 @@ public class TicTacTest extends TestCase {
         assertTrue(t.makeMove(2, 1, TicTac.player2));
         assertTrue(t.makeMove(2, 2, TicTac.player1));
         assertFalse(t.makeMove(0,0,TicTac.player1));
+        for (int i = 0; i<TicTac.boardSize; i++)
+            for (int j = 0; j<TicTac.boardSize; j++) {
+                assertFalse(t.makeMove(i,j, TicTac.player2));
+                assertFalse(t.makeMove(i,j, TicTac.player1));
+            }
 
         // Diagonal test
         t.newGame();
@@ -249,6 +254,11 @@ public class TicTacTest extends TestCase {
         assertTrue(t.makeMove(2, 0, TicTac.player2));
         assertTrue(t.makeMove(0, 0, TicTac.player1));
         assertFalse(t.makeMove(2, 1, TicTac.player2));
+        for (int i = 0; i<TicTac.boardSize; i++)
+            for (int j = 0; j<TicTac.boardSize; j++) {
+                assertFalse(t.makeMove(i,j, TicTac.player2));
+                assertFalse(t.makeMove(i,j, TicTac.player1));
+            }
 
         // Vertical test
         t.newGame();
@@ -259,7 +269,11 @@ public class TicTacTest extends TestCase {
         assertTrue(t.makeMove(2,2, TicTac.player1));
         assertTrue(t.makeMove(0,2, TicTac.player2));
         assertFalse(t.makeMove(2,1, TicTac.player1));
-
+        for (int i = 0; i<TicTac.boardSize; i++)
+            for (int j = 0; j<TicTac.boardSize; j++) {
+                assertFalse(t.makeMove(i,j, TicTac.player2));
+                assertFalse(t.makeMove(i,j, TicTac.player1));
+            }
         // Horizontal test
         t.newGame();
         assertTrue(t.makeMove(1,1, TicTac.player1));
@@ -267,8 +281,11 @@ public class TicTacTest extends TestCase {
         assertTrue(t.makeMove(2,1, TicTac.player1));
         assertTrue(t.makeMove(1,0, TicTac.player2));
         assertTrue(t.makeMove(0,1, TicTac.player1));
-        assertFalse(t.makeMove(2,2, TicTac.player2));
-
+        for (int i = 0; i<TicTac.boardSize; i++)
+            for (int j = 0; j<TicTac.boardSize; j++) {
+                assertFalse(t.makeMove(i,j, TicTac.player2));
+                assertFalse(t.makeMove(i,j, TicTac.player1));
+            }
     }
 
     public static Test suite() {
