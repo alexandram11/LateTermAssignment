@@ -39,7 +39,7 @@ public class TicTacTest extends TestCase {
     public void testNewGame() throws Exception {
         TicTac t = new TicTac();
         assertTrue(t.makeMove(2, 0, TicTac.player1));
-        t.NewGame();
+        t.newGame();
         assertTrue(t.makeMove(2, 0, TicTac.player1));
         t.NewGame();
         assertFalse(t.makeMove(2,0, TicTac.player2));
@@ -203,6 +203,31 @@ public class TicTacTest extends TestCase {
         assertTrue(t.makeMove(2, 2, TicTac.player1));
         assertTrue(t.checkHorizontalVictory());
         System.out.println(t.displayBoard());
+    }
+    public void testPlayerWhoWon() throws Exception {
+        TicTac t = new TicTac();
+        assertTrue(t.playerWhoWon() == 0); // should give 0 if no won has won.
+        assertTrue(t.makeMove(1, 1, TicTac.player1)); assertTrue(t.playerWhoWon() == 0);
+        assertTrue(t.makeMove(1, 0, TicTac.player2)); assertTrue(t.playerWhoWon() == 0);
+        assertTrue(t.makeMove(2, 2, TicTac.player1)); assertTrue(t.playerWhoWon() == 0);
+        assertTrue(t.makeMove(2, 0, TicTac.player2)); assertTrue(t.playerWhoWon() == 0);
+        assertTrue(t.makeMove(0, 0, TicTac.player1));
+        assertTrue(t.playerWhoWon() == 1);
+        System.out.println(t.displayBoard());
+        t.newGame();
+        assertTrue(t.makeMove(1, 2, TicTac.player1)); assertTrue(t.playerWhoWon() == 0);
+        assertTrue(t.makeMove(1, 0, TicTac.player2)); assertTrue(t.playerWhoWon() == 0);
+        assertTrue(t.makeMove(2, 2, TicTac.player1)); assertTrue(t.playerWhoWon() == 0);
+        assertTrue(t.makeMove(2, 0, TicTac.player2)); assertTrue(t.playerWhoWon() == 0);
+        assertTrue(t.makeMove(2, 1, TicTac.player1)); assertTrue(t.playerWhoWon() == 0);
+        assertTrue(t.makeMove(0, 0, TicTac.player2));
+        assertTrue(t.playerWhoWon() == 2);
+        System.out.println(t.displayBoard());
+    }
+
+
+    public void testPlayer() throws Exception {
+        //TODO test til að check hvort hægt sé að halda áfram þegar leikur er búinn...
     }
 
 

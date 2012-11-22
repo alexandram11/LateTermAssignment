@@ -22,19 +22,24 @@ public class TicTac {
         playerWhoWon = 0;
     }
 
+<<<<<<< HEAD
     // Creates a new board
     public void NewGame() {
+=======
+    public void newGame() {
+>>>>>>> Change TicTac so it can handle any size of board.
         turnCount = 0;
         for (int i = 0; i < boardSize; i++)
             for (int j = 0; j < boardSize; j++)
                 board[i][j] = 0;
+        playerWhoWon = 0;
     }
 
     // Checks if any there is any legal moves left
     public boolean canMakeMove(int i, int j) {
-        return i < 3 && i >= 0 &&
-                j < 3 && j >= 0 &&
-                turnCount < 9 &&
+        return i < boardSize && i >= 0 &&
+                j < boardSize && j >= 0 &&
+                turnCount < boardSize * boardSize &&
                 board[i][j] == 0 &&
                 !hasVictory();
     }
@@ -59,15 +64,28 @@ public class TicTac {
 
     // Checks possible victory combinations
     public boolean checkDiagonalVictory() {
-        if (board[1][1] != 0)
-            if ((board[2][2] == board[1][1] && board[1][1] == board[0][0]) || (board[2][0] == board[1][1] && board[1][1] == board[0][2]))
-                return true;
+        boolean hasVictory = true;
+        for (int i = 0; i + 1 < boardSize; )
+            for (int j = 0; j + 1 < boardSize; )
+                if (board[i][j] != board[++i][++j])
+                    hasVictory = false;
+        if (board[0][0] != 0 && hasVictory)
+            return true;
 
-        return false;
+        hasVictory = true;
+        for (int i = 0; i + 1 < boardSize; )
+            for (int j = boardSize - 1; j > 0; )
+                if (board[i][j] != board[++i][--j])
+                    hasVictory = false;
+
+        if (board[0][boardSize - 1] == 0 && hasVictory)
+            hasVictory = false;
+
+        return hasVictory;
     }
 
     public boolean checkHorizontalVictory() {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < boardSize; i++)
             if (board[i][0] != 0 &&
                     board[i][0] == board[i][1] &&
                     board[i][1] == board[i][2])
@@ -76,7 +94,7 @@ public class TicTac {
     }
 
     public boolean checkVerticalVictory() {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < boardSize; i++)
             if (board[0][i] != 0 &&
                     board[0][i] == board[1][i] &&
                     board[1][i] == board[2][i])
