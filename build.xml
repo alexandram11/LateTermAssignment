@@ -16,7 +16,7 @@
     </target>
     <!-- ======================================================== -->
     <target name="compile" depends="init" description="Compilation of all source files">
-        <javac srcdir="${src.java}" destdir="${output.dir}" classpath="${classpath}"/>
+        <javac srcdir="${src.java}/Domain" destdir="${output.dir}" classpath="${classpath}"/>
     </target>
     <!-- ======================================================== -->
     <target name="jar" depends="compile" description="Create the JAR">
