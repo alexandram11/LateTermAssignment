@@ -35,8 +35,18 @@ public class TicTacTest extends TestCase {
         TicTac t = new TicTac();
     }
 
+
+    public void testNewGame() throws Exception {
+        TicTac t = new TicTac();
+        assertTrue(t.makeMove(2, 0, TicTac.player1));
+        t.NewGame();
+        assertTrue(t.makeMove(2, 0, TicTac.player1));
+        //TODO vantar kanski aðeins meira við þetta test.
+    }
+
     /**
      * check the empty board, no O nor X from players
+     *
      * @throws Exception test fails
      */
     public void testDisplayEmptyBoard() throws Exception {
@@ -47,8 +57,17 @@ public class TicTacTest extends TestCase {
         System.out.println(s);
     }
 
+
+    public void testDisplayFullBoard() throws Exception {
+        TicTac t = new TicTac();
+        String s = t.displayBoard();
+        //TODO skoða streinginn. sjá hvort þetta passar.
+        System.out.println(s);
+    }
+
     /**
      * test whether chosen move is legal
+     *
      * @throws Exception if chosen index is out of bounds.
      */
     public void testCanMakeMove() throws Exception {
@@ -64,6 +83,7 @@ public class TicTacTest extends TestCase {
 
     /**
      * test whose turn it is
+     *
      * @throws Exception if the wrong player wants to
      */
     public void testWhosTurn() throws Exception {
@@ -88,6 +108,7 @@ public class TicTacTest extends TestCase {
 
     /**
      * tests the victory diagonal
+     *
      * @throws Exception
      */
     public void testCheckDiagonalVictory() throws Exception {
@@ -117,7 +138,7 @@ public class TicTacTest extends TestCase {
         assertFalse(a.checkDiagonalVictory());
         assertTrue(a.makeMove(0, 2, TicTac.player1));
         assertTrue(a.checkDiagonalVictory());
-        System.out.println(t.displayBoard());
+        System.out.println(a.displayBoard());
     }
 
     public void testCheckVerticalVictory() throws Exception {
@@ -151,6 +172,7 @@ public class TicTacTest extends TestCase {
         assertTrue(t.checkHorizontalVictory());
         System.out.println(t.displayBoard());
     }
+
 
     public static Test suite() {
         return new TestSuite(TicTacTest.class);

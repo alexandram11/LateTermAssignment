@@ -8,23 +8,36 @@ public class TicTac {
     public static final int player1 = 1;
     public static final int player2 = 2;
     private int turnCount;
+    private int playerWhoWon;
 
     public TicTac() {
-        board = new int[3][3];
+        board = new int[boardSize][boardSize];
         turnCount = 0;
+        playerWhoWon = 0;
+    }
+
+    public void NewGame() {
+        turnCount = 0;
+        for (int i = 0; i < boardSize; i++)
+            for (int j = 0; j < boardSize; j++)
+                board[i][j] = 0;
     }
 
     public boolean canMakeMove(int i, int j) {
         return i < 3 && i >= 0 &&
                 j < 3 && j >= 0 &&
                 turnCount < 9 &&
-                board[i][j] == 0;
+                board[i][j] == 0 &&
+                !hasVictory();
     }
 
     public boolean makeMove(int i, int j, int player) {
         if (canMakeMove(i, j) && player == whosTurn()) {
             board[i][j] = player;
-            turnCount++;
+            if (hasVictory())
+                playerWhoWon = player;
+            else
+                turnCount++;
             return true;
         }
         return false;
@@ -36,7 +49,7 @@ public class TicTac {
 
     public boolean checkDiagonalVictory() {
         if (board[1][1] != 0)
-            if ((board[2][2]==board[1][1]&& board[1][1]==board[0][0]) || (board[2][0]==board[1][1]&& board[1][1]==board[0][2]))
+            if ((board[2][2] == board[1][1] && board[1][1] == board[0][0]) || (board[2][0] == board[1][1] && board[1][1] == board[0][2]))
                 return true;
 
         return false;
@@ -60,11 +73,20 @@ public class TicTac {
         return false;
     }
 
+    public boolean hasVictory() {
+        return checkDiagonalVictory() ||
+                checkHorizontalVictory() ||
+                checkVerticalVictory();
+    }
+
+    public int playerWhoWon() {
+        return playerWhoWon;
+    }
+
     public String displayBoard() {
         String out = "";
-        for (int i = 0; i < 3; i++) {
-            out += "\n";
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < boardSize; ) {
+            for (int j = 0; j < boardSize; j++) {
                 if (board[i][j] == 0)
                     out += "[ ]";
                 else if (board[i][j] == 1)
@@ -73,7 +95,11 @@ public class TicTac {
                     out += "[O]";
                 out += "";
             }
+            if (++i != boardSize)
+                out += "\n";
         }
         return out;
     }
+
+
 }
