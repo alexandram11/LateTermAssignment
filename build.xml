@@ -2,7 +2,6 @@
          basedir=".">
     <!-- ======================================================== --> <!-- Global properties --> <!-- ======================================================== -->
     <property name="src.java" value="src"/>
-    <property name="src.msg" value="src/msg"/>
     <property name="output.dir" value="classes"/>
     <property name="dist.dir" value="dist"/>
     <property name="lib.dir" value="lib"/>
@@ -21,7 +20,6 @@
     <!-- ======================================================== -->
     <target name="jar" depends="compile" description="Create the JAR">
         <jar jarfile="${dist.dir}/${jar.file}" basedir="${output.dir}">
-            <fileset dir="${src.msg}"/>
             <manifest>
                 <attribute name="Main-Class" value="src.domain.TicTac"/>
             </manifest>
