@@ -8,6 +8,7 @@ package test;
  * To change this template use File | Settings | File Templates.
  */
 
+import Domain.TicTac;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -30,11 +31,18 @@ public class TicTacTest extends TestCase {
         super.tearDown();
     }
 
-    public void testOneNameValuePair() throws Exception {
-
+    public void testEmptyConstuctor() throws Exception {
+        TicTac t = new TicTac();
+    }
+    public void testDisplayBoard() throws Exception {
+        TicTac t = new TicTac();
+        String s = t.DisplayBoard();
+        assertFalse(s.contains("O"));
+        assertFalse(s.contains("X"));
     }
 
-    public static Test suite() {
+
+        public static Test suite() {
         return new TestSuite(TicTacTest.class);
     }
 }
