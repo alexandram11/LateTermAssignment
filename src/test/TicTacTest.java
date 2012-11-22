@@ -41,15 +41,15 @@ public class TicTacTest extends TestCase {
         assertTrue(t.makeMove(2, 0, TicTac.player1));
         t.newGame();
         assertTrue(t.makeMove(2, 0, TicTac.player1));
-        t.NewGame();
+        t.newGame();
         assertFalse(t.makeMove(2,0, TicTac.player2));
-        t.NewGame();
+        t.newGame();
         for (int i=0; i<TicTac.boardSize; i++){
             for(int j=0; j<TicTac.boardSize; j++)   {
                 assertTrue(t.canMakeMove(i,j));
             }
         }
-        t.NewGame();
+        t.newGame();
         assertFalse(t.checkDiagonalVictory());
         assertFalse(t.checkHorizontalVictory());
         assertFalse(t.checkHorizontalVictory());

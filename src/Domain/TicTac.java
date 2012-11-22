@@ -22,12 +22,8 @@ public class TicTac {
         playerWhoWon = 0;
     }
 
-<<<<<<< HEAD
     // Creates a new board
-    public void NewGame() {
-=======
     public void newGame() {
->>>>>>> Change TicTac so it can handle any size of board.
         turnCount = 0;
         for (int i = 0; i < boardSize; i++)
             for (int j = 0; j < boardSize; j++)
