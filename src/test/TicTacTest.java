@@ -1,8 +1,8 @@
 package test;
 
 /**
- * Created by IntelliJ IDEA.
- * User: hannes
+ * Created by: Team Lethargic
+ *
  * Date: Jun 19, 2008
  * Time: 11:35:13 PM
  * To change this template use File | Settings | File Templates.
@@ -229,6 +229,7 @@ public class TicTacTest extends TestCase {
     public void testPlayer() throws Exception {
 
         TicTac t = new TicTac();
+        // Test if board is full
         assertTrue(t.makeMove(0, 0, TicTac.player1));
         assertTrue(t.makeMove(0, 2, TicTac.player2));
         assertTrue(t.makeMove(0, 1, TicTac.player1));
@@ -240,15 +241,16 @@ public class TicTacTest extends TestCase {
         assertTrue(t.makeMove(2, 2, TicTac.player1));
         assertFalse(t.makeMove(0,0,TicTac.player1));
 
+        // Diagonal test
         t.newGame();
         assertTrue(t.makeMove(1, 1, TicTac.player1));
         assertTrue(t.makeMove(1, 0, TicTac.player2));
         assertTrue(t.makeMove(2, 2, TicTac.player1));
         assertTrue(t.makeMove(2, 0, TicTac.player2));
         assertTrue(t.makeMove(0, 0, TicTac.player1));
-        assertTrue(t.checkDiagonalVictory());
         assertFalse(t.makeMove(2, 1, TicTac.player2));
 
+        // Vertical test
         t.newGame();
         assertTrue(t.makeMove(1,1, TicTac.player1));
         assertTrue(t.makeMove(0,0, TicTac.player2));
@@ -257,6 +259,16 @@ public class TicTacTest extends TestCase {
         assertTrue(t.makeMove(2,2, TicTac.player1));
         assertTrue(t.makeMove(0,2, TicTac.player2));
         assertFalse(t.makeMove(2,1, TicTac.player1));
+
+        // Horizontal test
+        t.newGame();
+        assertTrue(t.makeMove(1,1, TicTac.player1));
+        assertTrue(t.makeMove(0,0, TicTac.player2));
+        assertTrue(t.makeMove(2,1, TicTac.player1));
+        assertTrue(t.makeMove(1,0, TicTac.player2));
+        assertTrue(t.makeMove(0,1, TicTac.player1));
+        assertFalse(t.makeMove(2,2, TicTac.player2));
+
     }
 
     public static Test suite() {
