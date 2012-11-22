@@ -1,6 +1,11 @@
 package Domain;
 
-import com.sun.org.apache.xpath.internal.axes.PredicatedNodeTest;
+/**
+ * Crated by: Team Lethargic
+ *
+ * This program lets two users play a 2 player game of TicTacToe
+ *
+ */
 
 public class TicTac {
     int board[][];
@@ -10,12 +15,14 @@ public class TicTac {
     private int turnCount;
     private int playerWhoWon;
 
+    // Initializes the board
     public TicTac() {
         board = new int[boardSize][boardSize];
         turnCount = 0;
         playerWhoWon = 0;
     }
 
+    // Creates a new board
     public void NewGame() {
         turnCount = 0;
         for (int i = 0; i < boardSize; i++)
@@ -23,6 +30,7 @@ public class TicTac {
                 board[i][j] = 0;
     }
 
+    // Checks if any there is any legal moves left
     public boolean canMakeMove(int i, int j) {
         return i < 3 && i >= 0 &&
                 j < 3 && j >= 0 &&
@@ -31,6 +39,7 @@ public class TicTac {
                 !hasVictory();
     }
 
+    // Lets the player makes a move
     public boolean makeMove(int i, int j, int player) {
         if (canMakeMove(i, j) && player == whosTurn()) {
             board[i][j] = player;
@@ -43,10 +52,12 @@ public class TicTac {
         return false;
     }
 
+    // Returns the player who has to make a move
     public int whosTurn() {
         return (turnCount % 2) + 1;
     }
 
+    // Checks possible victory combinations
     public boolean checkDiagonalVictory() {
         if (board[1][1] != 0)
             if ((board[2][2] == board[1][1] && board[1][1] == board[0][0]) || (board[2][0] == board[1][1] && board[1][1] == board[0][2]))
@@ -79,10 +90,12 @@ public class TicTac {
                 checkVerticalVictory();
     }
 
+    // Returns the player who is victorious
     public int playerWhoWon() {
         return playerWhoWon;
     }
 
+    // Prints the board on the screen
     public String displayBoard() {
         String out = "";
         for (int i = 0; i < boardSize; ) {
