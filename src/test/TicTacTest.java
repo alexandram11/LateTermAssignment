@@ -48,7 +48,7 @@ public class TicTacTest extends TestCase {
     }
 
     /**
-     * test whether move is legal
+     * test whether chosen move is legal
      * @throws Exception if chosen index is out of bounds.
      */
     public void testCanMakeMove() throws Exception {
@@ -60,10 +60,12 @@ public class TicTacTest extends TestCase {
         assertFalse(t.canMakeMove(3, 0));
         assertFalse(t.canMakeMove(0, -1));
         assertFalse(t.canMakeMove(1, 3));
-
-        //assertFalse(t.canMakeMove(0,0));
     }
 
+    /**
+     * test whose turn it is
+     * @throws Exception if the wrong player wants to
+     */
     public void testWhosTurn() throws Exception {
         TicTac t = new TicTac();
         assertTrue(t.whosTurn() == TicTac.player1);
@@ -84,6 +86,71 @@ public class TicTacTest extends TestCase {
         System.out.println(t.displayBoard());
     }
 
+    /**
+     * tests the victory diagonal
+     * @throws Exception
+     */
+    public void testCheckDiagonalVictory() throws Exception {
+        TicTac t = new TicTac();
+        assertFalse(t.checkDiagonalVictory());
+        assertTrue(t.makeMove(1, 1, TicTac.player1));
+        assertFalse(t.checkDiagonalVictory());
+        assertTrue(t.makeMove(1, 0, TicTac.player2));
+        assertFalse(t.checkDiagonalVictory());
+        assertTrue(t.makeMove(2, 2, TicTac.player1));
+        assertFalse(t.checkDiagonalVictory());
+        assertTrue(t.makeMove(2, 0, TicTac.player2));
+        assertFalse(t.checkDiagonalVictory());
+        assertTrue(t.makeMove(0, 0, TicTac.player1));
+        assertTrue(t.checkDiagonalVictory());
+        System.out.println(t.displayBoard());
+
+        TicTac a = new TicTac();
+        assertFalse(a.checkDiagonalVictory());
+        assertTrue(a.makeMove(1, 1, TicTac.player1));
+        assertFalse(a.checkDiagonalVictory());
+        assertTrue(a.makeMove(1, 0, TicTac.player2));
+        assertFalse(a.checkDiagonalVictory());
+        assertTrue(a.makeMove(2, 0, TicTac.player1));
+        assertFalse(a.checkDiagonalVictory());
+        assertTrue(a.makeMove(0, 0, TicTac.player2));
+        assertFalse(a.checkDiagonalVictory());
+        assertTrue(a.makeMove(0, 2, TicTac.player1));
+        assertTrue(a.checkDiagonalVictory());
+        System.out.println(t.displayBoard());
+    }
+
+    public void testCheckVerticalVictory() throws Exception {
+        TicTac t = new TicTac();
+        assertFalse(t.checkVerticalVictory());
+        assertTrue(t.makeMove(1, 1, TicTac.player1));
+        assertFalse(t.checkVerticalVictory());
+        assertTrue(t.makeMove(1, 0, TicTac.player2));
+        assertFalse(t.checkVerticalVictory());
+        assertTrue(t.makeMove(0, 1, TicTac.player1));
+        assertFalse(t.checkVerticalVictory());
+        assertTrue(t.makeMove(2, 0, TicTac.player2));
+        assertFalse(t.checkVerticalVictory());
+        assertTrue(t.makeMove(2, 1, TicTac.player1));
+        assertTrue(t.checkVerticalVictory());
+        System.out.println(t.displayBoard());
+    }
+
+    public void testCheckHorizontalVictory() throws Exception {
+        TicTac t = new TicTac();
+        assertFalse(t.checkHorizontalVictory());
+        assertTrue(t.makeMove(2, 0, TicTac.player1));
+        assertFalse(t.checkHorizontalVictory());
+        assertTrue(t.makeMove(1, 1, TicTac.player2));
+        assertFalse(t.checkHorizontalVictory());
+        assertTrue(t.makeMove(2, 1, TicTac.player1));
+        assertFalse(t.checkHorizontalVictory());
+        assertTrue(t.makeMove(1, 2, TicTac.player2));
+        assertFalse(t.checkHorizontalVictory());
+        assertTrue(t.makeMove(2, 2, TicTac.player1));
+        assertTrue(t.checkHorizontalVictory());
+        System.out.println(t.displayBoard());
+    }
 
     public static Test suite() {
         return new TestSuite(TicTacTest.class);

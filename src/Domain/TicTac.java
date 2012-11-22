@@ -34,6 +34,32 @@ public class TicTac {
         return (turnCount % 2) + 1;
     }
 
+    public boolean checkDiagonalVictory() {
+        if (board[1][1] != 0)
+            if ((board[2][2]==board[1][1]&& board[1][1]==board[0][0]) || (board[2][0]==board[1][1]&& board[1][1]==board[0][2]))
+                return true;
+
+        return false;
+    }
+
+    public boolean checkHorizontalVictory() {
+        for (int i = 0; i < 3; i++)
+            if (board[i][0] != 0 &&
+                    board[i][0] == board[i][1] &&
+                    board[i][1] == board[i][2])
+                return true;
+        return false;
+    }
+
+    public boolean checkVerticalVictory() {
+        for (int i = 0; i < 3; i++)
+            if (board[0][i] != 0 &&
+                    board[0][i] == board[1][i] &&
+                    board[1][i] == board[2][i])
+                return true;
+        return false;
+    }
+
     public String displayBoard() {
         String out = "";
         for (int i = 0; i < 3; i++) {
