@@ -48,11 +48,13 @@ public class TicTacTest extends TestCase {
             for(int j=0; j<TicTac.boardSize; j++)   {
                 assertTrue(t.canMakeMove(i,j));
             }
-            assertFalse(t.checkDiagonalVictory());
-            assertFalse(t.checkHorizontalVictory());
-            assertFalse(t.checkHorizontalVictory());
         }
-    }
+        t.NewGame();
+        assertFalse(t.checkDiagonalVictory());
+        assertFalse(t.checkHorizontalVictory());
+        assertFalse(t.checkHorizontalVictory());
+        }
+
 
     /**
      * check the empty board, no O nor X from players
