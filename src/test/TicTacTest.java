@@ -34,15 +34,47 @@ public class TicTacTest extends TestCase {
     public void testEmptyConstuctor() throws Exception {
         TicTac t = new TicTac();
     }
-    public void testDisplayBoard() throws Exception {
+
+    public void testDisplayEmptyBoard() throws Exception {
         TicTac t = new TicTac();
-        String s = t.DisplayBoard();
+        String s = t.displayBoard();
         assertFalse(s.contains("O"));
         assertFalse(s.contains("X"));
+        System.out.println(s);
+    }
+
+    public void testCanMakeMove() throws Exception {
+        TicTac t = new TicTac();
+        assertTrue(t.canMakeMove(0, 0));
+        assertFalse(t.canMakeMove(-1, 0));
+        assertFalse(t.canMakeMove(0, 3));
+        assertTrue(t.canMakeMove(2, 2));
+
+        //assertFalse(t.canMakeMove(0,0));
+    }
+
+    public void testWhosTurn() throws Exception {
+        TicTac t = new TicTac();
+        assertTrue(t.whosTurn() == TicTac.player1);
+        assertTrue(t.makeMove(0, 0, TicTac.player1));
+        assertTrue(t.whosTurn() == TicTac.player2);
+        assertFalse(t.whosTurn() == TicTac.player1);
+    }
+
+    public void testMakingAMove() throws Exception {
+        TicTac t = new TicTac();
+        assertTrue(t.canMakeMove(0, 0));
+        assertTrue(t.makeMove(0, 0, TicTac.player1));
+        assertFalse(t.makeMove(0, 1, TicTac.player1)); // not his turn
+        assertFalse(t.canMakeMove(0, 0));
+        assertFalse(t.makeMove(0, 0, TicTac.player1));
+        assertFalse(t.makeMove(0, 0, TicTac.player2));
+        assertTrue(t.makeMove(0, 1, TicTac.player2));
+        System.out.println(t.displayBoard());
     }
 
 
-        public static Test suite() {
+    public static Test suite() {
         return new TestSuite(TicTacTest.class);
     }
 }
