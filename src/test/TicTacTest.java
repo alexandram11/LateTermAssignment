@@ -35,6 +35,10 @@ public class TicTacTest extends TestCase {
         TicTac t = new TicTac();
     }
 
+    /**
+     * check the empty board, no O nor X from players
+     * @throws Exception test fails
+     */
     public void testDisplayEmptyBoard() throws Exception {
         TicTac t = new TicTac();
         String s = t.displayBoard();
@@ -43,12 +47,19 @@ public class TicTacTest extends TestCase {
         System.out.println(s);
     }
 
+    /**
+     * test whether move is legal
+     * @throws Exception if chosen index is out of bounds.
+     */
     public void testCanMakeMove() throws Exception {
         TicTac t = new TicTac();
         assertTrue(t.canMakeMove(0, 0));
         assertFalse(t.canMakeMove(-1, 0));
         assertFalse(t.canMakeMove(0, 3));
         assertTrue(t.canMakeMove(2, 2));
+        assertFalse(t.canMakeMove(3, 0));
+        assertFalse(t.canMakeMove(0, -1));
+        assertFalse(t.canMakeMove(1, 3));
 
         //assertFalse(t.canMakeMove(0,0));
     }
