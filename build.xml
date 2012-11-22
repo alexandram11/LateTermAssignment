@@ -1,7 +1,7 @@
 <project name="ImportContentProcess" default="jar"
          basedir=".">
     <!-- ======================================================== --> <!-- Global properties --> <!-- ======================================================== -->
-    <property name="src.java" value="src/java"/>
+    <property name="src.java" value="src"/>
     <property name="src.msg" value="src/msg"/>
     <property name="output.dir" value="classes"/>
     <property name="dist.dir" value="dist"/>
