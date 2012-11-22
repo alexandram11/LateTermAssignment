@@ -60,8 +60,28 @@ public class TicTacTest extends TestCase {
 
     public void testDisplayFullBoard() throws Exception {
         TicTac t = new TicTac();
+        assertTrue(t.makeMove(0, 0, TicTac.player1));
+        assertTrue(t.makeMove(0, 2, TicTac.player2));
+        assertTrue(t.makeMove(0, 1, TicTac.player1));
+        assertTrue(t.makeMove(1, 1, TicTac.player2));
+        assertTrue(t.makeMove(1, 2, TicTac.player1));
+        assertTrue(t.makeMove(1, 0, TicTac.player2));
+        assertTrue(t.makeMove(2, 0, TicTac.player1));
+        assertTrue(t.makeMove(2, 1, TicTac.player2));
+        assertTrue(t.makeMove(2, 2, TicTac.player1));
         String s = t.displayBoard();
-        //TODO skoða streinginn. sjá hvort þetta passar.
+
+        s = s.trim();
+        int xCount = 0, oCount = 0;
+        for (int i = 0; i < s.length(); i++)
+        {
+            if (s.charAt(i) == 'X')
+                xCount++;
+            else if (s.charAt(i) == 'O')
+                oCount++;
+        }
+        assertTrue(xCount == 5);
+        assertTrue(oCount == 4);
         System.out.println(s);
     }
 
