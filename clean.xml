@@ -1,5 +1,4 @@
-<project name="ImportContentProcess" default="jar"
-         basedir=".">
+<project name="clean">
     <!-- ======================================================== --> <!-- Global properties --> <!-- ======================================================== -->
     <property name="src.java" value="src"/>
     <property name="output.dir" value="classes"/>
