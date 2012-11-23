@@ -1,4 +1,4 @@
-<project name="ImportContentProcess" default="jar"
+<project name="ImportContentProcess" default="tests"
          basedir=".">
     <!-- ======================================================== --> <!-- Global properties --> <!-- ======================================================== -->
     <property name="src.java" value="src"/>
@@ -24,23 +24,12 @@
             </manifest>
         </jar>
     </target>
-    <!-- ========================================================
-    <target name="run" depends="jar" description="Runs the process">
-        <java classname="Presentation.TicTacGUI">
-            <classpath>
-                <pathelement path="${classpath}"/>
-                <pathelement path="${java.class.path}"/>
-                <pathelement location="${dist.dir}\TicTac.jar"/>
-            </classpath>
-        </java>
-    </target>
-    ======================================================== -->
+    <!-- ======================================================== -->
     <target name="tests" depends="jar" description="Runs the tests">
-        <junit>
+        <junit fork="true">
             <classpath>
                 <pathelement location="${classpath}"/>
                 <pathelement location="${dist.dir}/${jar.file}" />
-                <!-- //TODO vanar meira hér. -->
             </classpath>
             <test name="test.domain.TicTacTest"/>
         </junit>
