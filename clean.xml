@@ -1,0 +1,17 @@
+<project name="ImportContentProcess" default="jar"
+         basedir=".">
+    <!-- ======================================================== --> <!-- Global properties --> <!-- ======================================================== -->
+    <property name="src.java" value="src"/>
+    <property name="output.dir" value="classes"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="jar.file" value="TicTac.jar"/>
+    <property name="classpath"
+              value="${lib.dir}/rome-1.0.jar:${lib.dir}/junit-4.10.jar:${lib.dir}/jdom.jar:${lib.dir}/spring.jar:${lib.dir}/spring-jdbc-3.2.0.M2.jar:${lib.dir}/commons-logging.jar:${lib.dir}/ruframework-2.0.jar"/>
+    <!-- ======================================================== -->
+    <!-- ======================================================== -->
+    <target name="clean" description="Delete all generated files">
+        <delete dir="${output.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+</project>

@@ -35,9 +35,4 @@
             </classpath>
         </java>
     </target>
-    <!-- ======================================================== -->
-    <target name="clean" description="Delete all generated files">
-        <delete dir="${output.dir}"/>
-        <delete dir="${dist.dir}"/>
-    </target>
 </project>
