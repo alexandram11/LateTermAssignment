@@ -1,11 +1,19 @@
-<target name="tests" depends="compile" description="Runs the tests">
-    <junit failureProperty="test.failure">
+<target name="unitTests">
+    <!-- ======================================================== --> <!-- Global properties --> <!-- ======================================================== -->
+    <property name="src.java" value="src"/>
+    <property name="test.dir" value="src/test/domain/"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="classpath"
+              value="${lib.dir}/rome-1.0.jar:${lib.dir}/junit-4.10.jar:${lib.dir}/jdom.jar:${lib.dir}/spring.jar:${lib.dir}/spring-jdbc-3.2.0.M2.jar:${lib.dir}/commons-logging.jar:${lib.dir}/ruframework-2.0.jar"/>
+    
+    <junit printsummary="yes" failureProperty="test.failure">
         <classpath>
             <pathelement location="${classpath}"/>
             <pathelement location="${test.dir}"/>
-            <pathelement path="${}"/>
+            <pathelement path="${test.dir}/TicTacTest.java"/>
         </classpath>
         <test name="src.test.domain.TicTacTest"/>
     </junit>
     <fail message="test failed" if="test.failure"/>
 </target>
+
