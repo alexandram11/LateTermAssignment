@@ -4,21 +4,12 @@ import Domain.TicTac;
 import Domain.TicTacInterface;
 
 import javax.swing.*;
-import javax.swing.plaf.LabelUI;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
  * //TODO Vantar Comment og að bæta við logic fyrir TicTac leikin.
  */
 public class TicTacGUI extends AbsTicTacGameGUI {
-    public TicTacGUI() {
-        super();
-    }
-
     public TicTacGUI(TicTacInterface Game) {
         super();
         gameLogic = Game;

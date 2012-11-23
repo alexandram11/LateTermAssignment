@@ -9,9 +9,15 @@ package test.Presentation;
  */
 
 import Domain.TicTac;
+import Domain.TicTacInterface;
+import Presentation.TicTacGUI;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 
 
 /**
@@ -19,6 +25,8 @@ import junit.framework.TestSuite;
  * Example for Test Driven Development
  */
 public class TicTacGuiTest extends TestCase {
+    //The Implementation to use, for easy switching of impementations.
+    TicTacInterface ticTacLogic = new TicTac();
 
     public TicTacGuiTest(String name) {
         super(name);
@@ -34,6 +42,24 @@ public class TicTacGuiTest extends TestCase {
 
     public void testEmptyConstuctor() throws Exception {
         TicTac t = new TicTac();
+    }
+
+    public void testButtonIcons() throws Exception {
+        TicTacGUI gui = new TicTacGUI(ticTacLogic);
+        JButton button = new JButton(new ImageIcon("img/empty.png"));
+        gui.actionPerformed(new ActionEvent(button, 1, "btn_1_1"));
+        assertEquals(new ImageIcon("img/x.png").getImage(), ((ImageIcon) button.getIcon()).getImage());
+        gui.actionPerformed(new ActionEvent(button, 1, "btn_1_2"));
+        assertEquals(new ImageIcon("img/o.png").getImage(), ((ImageIcon) button.getIcon()).getImage());
+    }
+
+    public void testNewGame() throws Exception {
+        TicTacGUI gui = new TicTacGUI(ticTacLogic);
+        //JButton button = new JButton(new ImageIcon("img/empty.png"));
+        //gui.actionPerformed(new ActionEvent(button, 1, "btn_1_1"));
+        for (Component c : gui.getComponents())
+            if (c.getClass() == JButton.class)
+               assertEquals(((ImageIcon)((JButton)c).getIcon()).getImage(),new ImageIcon("img/empty.png").getImage());
     }
 
     public static Test suite() {
