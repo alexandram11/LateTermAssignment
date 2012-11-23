@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="713e14ab-dc2c-4f12-b923-e41c254fa24f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/test/domain/TicTacTest.class" afterPath="$PROJECT_DIR$/classes/test/domain/TicTacTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
     </list>
     <ignored path="TicTac.iws" />
@@ -24,6 +26,23 @@
     <groupTables value="false" />
   </component>
   <component name="DebuggerManager">
+    <method_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/test/domain/TicTacTest.java" line="30" class="test.domain.TicTacTest" package="test.domain">
+        <option name="WATCH_ENTRY" value="true" />
+        <option name="WATCH_EXIT" value="true" />
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </method_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -67,7 +86,7 @@
       <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="16" selection-start="2304" selection-end="2304" vertical-scroll-proportion="0.45070422">
+            <state line="22" column="29" selection-start="1294" selection-end="1294" vertical-scroll-proportion="-0.45070422">
               <folding />
             </state>
           </provider>
@@ -112,7 +131,7 @@
       <file leaf-file-name="TicTac.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Domain/TicTac.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="32" selection-start="1086" selection-end="1102" vertical-scroll-proportion="0.0">
+            <state line="40" column="32" selection-start="1086" selection-end="1102" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -121,8 +140,36 @@
       <file leaf-file-name="TicTacTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/domain/TicTacTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="812" selection-end="812" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="44" column="19" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="docComment;class#TicTacTest#0" expanded="false" />
+                <element signature="method#TicTacTest#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#setUp#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#tearDown#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testEmptyConstuctor#0;class#TicTacTest#0" expanded="false" />
+                <element signature="docComment;method#testDisplayEmptyBoard#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testDisplayEmptyBoard#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testDisplayFullBoard#0;class#TicTacTest#0" expanded="false" />
+                <element signature="docComment;method#testCanMakeMove#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testCanMakeMove#0;class#TicTacTest#0" expanded="false" />
+                <element signature="docComment;method#testWhosTurn#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testWhosTurn#0;class#TicTacTest#0" expanded="false" />
+                <element signature="docComment;method#testMakingAMove#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testMakingAMove#0;class#TicTacTest#0" expanded="false" />
+                <element signature="docComment;method#testCheckDiagonalVictory#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testCheckDiagonalVictory#0;class#TicTacTest#0" expanded="false" />
+                <element signature="docComment;method#testCheckVerticalVictory#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testCheckVerticalVictory#0;class#TicTacTest#0" expanded="false" />
+                <element signature="docComment;method#testCheckHorizontalVictory#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testCheckHorizontalVictory#0;class#TicTacTest#0" expanded="false" />
+                <element signature="docComment;method#testPlayerWhoWon#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testPlayerWhoWon#0;class#TicTacTest#0" expanded="false" />
+                <element signature="docComment;method#testGameOver#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testGameOver#0;class#TicTacTest#0" expanded="false" />
+                <element signature="docComment;method#testMovesAfterGameOver#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#testMovesAfterGameOver#0;class#TicTacTest#0" expanded="false" />
+                <element signature="method#suite#0;class#TicTacTest#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -149,10 +196,10 @@
         <option value="$PROJECT_DIR$/src/Presentation/TicTacGUI.java" />
         <option value="$PROJECT_DIR$/src/Presentation/PlayerPanel.java" />
         <option value="$PROJECT_DIR$/src/Domain/TicTacInterface.java" />
-        <option value="$PROJECT_DIR$/src/test/domain/TicTacTest.java" />
         <option value="$PROJECT_DIR$/src/Domain/TicTac.java" />
         <option value="$PROJECT_DIR$/unitTest.xml" />
         <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/src/test/domain/TicTacTest.java" />
       </list>
     </option>
   </component>
@@ -239,6 +286,50 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Presentation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TicTac" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LateTermAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TicTac" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LateTermAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -302,35 +393,7 @@
       <recent name="C:\Skilaverkefni_4_HONN\LateTermAssignment" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TicTacGUI">
-    <configuration default="false" name="TicTacGUI" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Presentation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="Presentation.TicTacGUI" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="TicTac" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.TicTacTest.testNewGame">
     <configuration default="false" name="All in TicTac" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="TicTac" />
@@ -428,6 +491,34 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="test.Presentation" />
       <option name="MAIN_CLASS_NAME" value="test.Presentation.TicTacGuiTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TicTacTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="test.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="TicTac" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test.domain" />
+      <option name="MAIN_CLASS_NAME" value="test.domain.TicTacTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -565,11 +656,11 @@
       </method>
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.TicTacGUI" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.All in TicTac" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TicTacGuiTest.testNewGame" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TicTacTest.testNewGame" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TicTacGuiTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.All in TicTac" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TicTacGuiTest.testNewGame" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TicTacTest.testNewGame" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TicTacGuiTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TicTacTest" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -630,7 +721,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.6815069" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -644,7 +735,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.6815069" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37157536" sideWeight="0.99589324" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37157536" sideWeight="0.99589324" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270548" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.6815069" order="3" side_tool="false" content_ui="tabs" />
@@ -757,7 +848,6 @@
         <filter targetName="jar" isVisible="true" />
         <filter targetName="compile" isVisible="true" />
         <filter targetName="init" isVisible="true" />
-        <filter targetName="run" isVisible="true" />
       </targetFilters>
       <treeView value="true" />
       <verbose value="true" />
@@ -799,14 +889,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/TicTac.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="32" selection-start="1086" selection-end="1102" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/domain/TicTacTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="812" selection-end="812" vertical-scroll-proportion="0.0">
+        <state line="40" column="32" selection-start="1086" selection-end="1102" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -837,9 +920,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/domain/TicTacTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="19" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="docComment;class#TicTacTest#0" expanded="false" />
+            <element signature="method#TicTacTest#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#setUp#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#tearDown#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testEmptyConstuctor#0;class#TicTacTest#0" expanded="false" />
+            <element signature="docComment;method#testDisplayEmptyBoard#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testDisplayEmptyBoard#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testDisplayFullBoard#0;class#TicTacTest#0" expanded="false" />
+            <element signature="docComment;method#testCanMakeMove#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testCanMakeMove#0;class#TicTacTest#0" expanded="false" />
+            <element signature="docComment;method#testWhosTurn#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testWhosTurn#0;class#TicTacTest#0" expanded="false" />
+            <element signature="docComment;method#testMakingAMove#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testMakingAMove#0;class#TicTacTest#0" expanded="false" />
+            <element signature="docComment;method#testCheckDiagonalVictory#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testCheckDiagonalVictory#0;class#TicTacTest#0" expanded="false" />
+            <element signature="docComment;method#testCheckVerticalVictory#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testCheckVerticalVictory#0;class#TicTacTest#0" expanded="false" />
+            <element signature="docComment;method#testCheckHorizontalVictory#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testCheckHorizontalVictory#0;class#TicTacTest#0" expanded="false" />
+            <element signature="docComment;method#testPlayerWhoWon#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testPlayerWhoWon#0;class#TicTacTest#0" expanded="false" />
+            <element signature="docComment;method#testGameOver#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testGameOver#0;class#TicTacTest#0" expanded="false" />
+            <element signature="docComment;method#testMovesAfterGameOver#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#testMovesAfterGameOver#0;class#TicTacTest#0" expanded="false" />
+            <element signature="method#suite#0;class#TicTacTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="16" selection-start="2304" selection-end="2304" vertical-scroll-proportion="0.45070422">
+        <state line="22" column="29" selection-start="1294" selection-end="1294" vertical-scroll-proportion="-0.45070422">
           <folding />
         </state>
       </provider>

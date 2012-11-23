@@ -35,8 +35,8 @@
         </java>
     </target>
     ======================================================== -->
-    <target name="tests" depends="compile" description="Runs the tests">
-        <junit failureProperty="test.failure">
+    <target name="tests" depends="jar" description="Runs the tests">
+        <junit>
             <classpath>
                 <pathelement location="${classpath}"/>
                 <pathelement location="${dist.dir}/${jar.file}" />
@@ -44,7 +44,6 @@
             </classpath>
             <test name="test.domain.TicTacTest"/>
         </junit>
-        <fail message="test failed" if="test.failure"/>
     </target>
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
