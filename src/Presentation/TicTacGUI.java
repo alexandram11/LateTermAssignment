@@ -29,18 +29,22 @@ public class TicTacGUI extends AbsTicTacGameGUI {
             lower.startNewGame();
             cleanUp();
             gameLogic.newGame();
+            lower.playerTurn(1);
         } else {
             JButton b = (JButton) e.getSource();
             int i = Integer.parseInt(e.getActionCommand().split("_")[1]);
             int j = Integer.parseInt(e.getActionCommand().split("_")[2]);
             int player = gameLogic.whosTurn();
             if (gameLogic.makeMove(i, j, player)) {
+                lower.playerTurn(gameLogic.whosTurn());
                 if (player == 1)
                     b.setIcon(xIcon);
                 else
                     b.setIcon(oIcon);
-                //if (gameLogic.isVictory())
-                    //TODO
+                if (gameLogic.isVictory())
+                    lower.win(player);
+                if (gameLogic.gameOver())
+                    lower.endGame();
             }
         }
     }

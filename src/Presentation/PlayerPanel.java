@@ -17,24 +17,24 @@ public class PlayerPanel extends JPanel {
     protected JLabel[] points;
     protected JLabel[] winLabels;
 
-    public PlayerPanel(ActionListener listener){
+    public PlayerPanel(ActionListener listener) {
         playerPanels = new JPanel[2];
         names = new JLabel[2];
         points = new JLabel[2];
         winLabels = new JLabel[2];
 
-        Font fSmall = new Font("Helvetica",Font.BOLD,12);
-        Font fBig = new Font("Helvetica",Font.BOLD,15);
+        Font fSmall = new Font("Helvetica", Font.BOLD, 12);
+        Font fBig = new Font("Helvetica", Font.BOLD, 15);
 
-        for(int i = 0;i<2;i++){
-            GridLayout temp = new GridLayout(3,1);
+        for (int i = 0; i < 2; i++) {
+            GridLayout temp = new GridLayout(3, 1);
             //Player panels initialized and loaded with a GridLayout
-            playerPanels[i]=new JPanel();
+            playerPanels[i] = new JPanel();
             playerPanels[i].setLayout(temp);
             playerPanels[i].setBackground(Color.BLACK);
 
             //winLabels initialized
-            winLabels[i]= new JLabel("Player "+(i+1)+" WINS!");
+            winLabels[i] = new JLabel("Player " + (i + 1) + " WINS!");
             winLabels[i].setVerticalAlignment(AbstractButton.CENTER);
             winLabels[i].setHorizontalAlignment(AbstractButton.CENTER);
             //winLabel font and font-color set
@@ -45,7 +45,7 @@ public class PlayerPanel extends JPanel {
             playerPanels[i].add(winLabels[i]);
 
             //name labels initialized
-            names[i] = new JLabel("Player "+(i+1));
+            names[i] = new JLabel("Player " + (i + 1));
             names[i].setVerticalAlignment(AbstractButton.CENTER);
             names[i].setHorizontalAlignment(AbstractButton.CENTER);
             //name label font and font-color set
@@ -80,7 +80,7 @@ public class PlayerPanel extends JPanel {
         btn_newGame.setBackground(Color.WHITE);
         btn_newGame.setFocusable(false);
 
-        BoxLayout bMan = new BoxLayout(this,BoxLayout.LINE_AXIS);
+        BoxLayout bMan = new BoxLayout(this, BoxLayout.LINE_AXIS);
         setLayout(bMan);
 
         add(playerPanels[0]);
@@ -90,21 +90,29 @@ public class PlayerPanel extends JPanel {
 
     /**
      * Tells the player panel that the given player has won the game
+     *
      * @param player zero-based index of the player
      */
     public void win(int player) {
-        points[player].setText(String.valueOf(Integer.parseInt(points[player].getText())+1));
-        winLabels[player].setVisible(true);
-        playerPanels[Math.abs(player-1)].setBackground(Color.BLACK);
+        points[player-1].setText(String.valueOf(Integer.parseInt(points[player-1].getText()) + 1));
+        winLabels[player-1].setVisible(true);
+        playerPanels[player % 2].setBackground(Color.BLACK);
         endGame();
     }
 
-    public void playerTurn(int player){
-        playerPanels[Math.abs(player-1)].setBackground(Color.BLACK);
-        playerPanels[player].setBackground(Color.BLUE);
+    /**
+     * Takes in a player which is either int value 1 or 2.
+     *
+     * @param player Player 1 or player 2.
+     */
+    public void playerTurn(int player) {
+        if (player - 1 >= 0 && player - 1 < 2) {
+            playerPanels[player - 1].setBackground(Color.BLUE);
+            playerPanels[player % 2].setBackground(Color.BLACK);
+        }
     }
 
-    private void endGame(){
+    public void endGame() {
         btn_newGame.setBackground(Color.WHITE);
         btn_newGame.setBorderPainted(true);
         btn_newGame.setEnabled(true);
@@ -114,8 +122,8 @@ public class PlayerPanel extends JPanel {
     /**
      * Formats the interface for a new game
      */
-    public void startNewGame(){
-        for(int i = 0; i< 2 ; i++){
+    public void startNewGame() {
+        for (int i = 0; i < 2; i++) {
             winLabels[i].setVisible(false);
             playerPanels[i].setBackground(Color.BLACK);
         }
