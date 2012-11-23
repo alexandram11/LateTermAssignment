@@ -39,6 +39,7 @@
         <junit failureProperty="test.failure">
             <classpath>
                 <pathelement location="${classpath}"/>
+                <pathelement location="${dist.dir}/${jar.file}" />
                 <!-- //TODO vanar meira hér. -->
             </classpath>
             <test name="test.domain.TicTacTest"/>
