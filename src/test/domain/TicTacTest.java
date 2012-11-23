@@ -96,8 +96,8 @@ public class TicTacTest extends TestCase {
 
     /**
      * test whether chosen move is legal
-     *
-     * @throws Exception if chosen index is out of bounds.
+     * that is, whether the chosen square is empty and inside the board
+     * @throws Exception if chosen index is out of bounds or square full.
      */
     public void testCanMakeMove() throws Exception {
         TicTac t = new TicTac();
@@ -108,12 +108,13 @@ public class TicTacTest extends TestCase {
         assertFalse(t.canMakeMove(3, 0));
         assertFalse(t.canMakeMove(0, -1));
         assertFalse(t.canMakeMove(1, 3));
+        assertTrue(t.makeMove(2, 0, TicTac.player1));
+        assertFalse(t.canMakeMove(2, 0));
     }
 
     /**
      * test whose turn it is
-     *
-     * @throws Exception if the wrong player wants to
+     * @throws Exception if the wrong player wants to make a move.
      */
     public void testWhosTurn() throws Exception {
         TicTac t = new TicTac();
@@ -123,7 +124,10 @@ public class TicTacTest extends TestCase {
         assertFalse(t.whosTurn() == TicTac.player1);
     }
 
-    //TODO Vantar comment.
+    /**
+     * tests whether the right player is doing the move
+     * @throws Exception if not, or the field is full.
+     */
     public void testMakingAMove() throws Exception {
         TicTac t = new TicTac();
         assertTrue(t.canMakeMove(0, 0));
@@ -137,9 +141,8 @@ public class TicTacTest extends TestCase {
     }
 
     /**
-     * tests the victory diagonal
-     *
-     * @throws Exception
+     * tests the victory (in both) diagonal directions.
+     * @throws Exception if victory not there (yet).
      */
     public void testCheckDiagonalVictory() throws Exception {
         TicTac t = new TicTac();
@@ -171,6 +174,10 @@ public class TicTacTest extends TestCase {
         //System.out.println(a.displayBoard()); //For debugging the test
     }
 
+    /**
+     * checks the vertical victory method
+     * @throws Exception if victory not there (yet).
+     */
     public void testCheckVerticalVictory() throws Exception {
         TicTac t = new TicTac();
         assertFalse(t.checkVerticalVictory());
@@ -187,6 +194,10 @@ public class TicTacTest extends TestCase {
         //System.out.println(t.displayBoard()); //For debugging the test
     }
 
+    /**
+     * checks the vertical victory method
+     * @throws Exception if victory not there (yet).
+     */
     public void testCheckHorizontalVictory() throws Exception {
         TicTac t = new TicTac();
         assertFalse(t.checkHorizontalVictory());
@@ -203,6 +214,11 @@ public class TicTacTest extends TestCase {
         //System.out.println(t.displayBoard());//For debugging the test
     }
 
+    /**
+     * tests whether the player that won the game is
+     * registered as the winner.
+     * @throws Exception as long as nobody one.
+     */
     public void testPlayerWhoWon() throws Exception {
         TicTac t = new TicTac();
         assertTrue(t.playerWhoWon() == 0); // should give 0 if no won has won.
@@ -215,7 +231,8 @@ public class TicTacTest extends TestCase {
         assertTrue(t.makeMove(2, 0, TicTac.player2));
         assertTrue(t.playerWhoWon() == 0);
         assertTrue(t.makeMove(0, 0, TicTac.player1));
-        assertTrue(t.playerWhoWon() == 1);
+        assertTrue(t.playerWhoWon() == TicTac.player1);
+        assertFalse(t.playerWhoWon() == TicTac.player2);
         //System.out.println(t.displayBoard()); //Debugging use Tests
         t.newGame();
         assertTrue(t.makeMove(1, 2, TicTac.player1));
@@ -233,6 +250,10 @@ public class TicTacTest extends TestCase {
         //System.out.println(t.displayBoard()); //For debugging the test
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     public void testGameOver() throws Exception {
         TicTac t = new TicTac();
         assertFalse(t.gameOver());
@@ -269,6 +290,11 @@ public class TicTacTest extends TestCase {
         assertTrue(t.gameOver());
     }
 
+    /**
+     * test to not let any player make a move if either board is full
+     * or victory´s there for either player.
+     * @throws Exception
+     */
     public void testMovesAfterGameOver() throws Exception {
         TicTac t = new TicTac();
         // Test if board is full

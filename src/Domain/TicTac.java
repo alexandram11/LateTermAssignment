@@ -110,7 +110,7 @@ public class TicTac implements TicTacInterface {
                 checkVerticalVictory();
     }
 
-    //TODO Vanatar Comment
+
     @Override
     public boolean gameOver() {
         return isVictory() || turnCount == boardSize * boardSize;
