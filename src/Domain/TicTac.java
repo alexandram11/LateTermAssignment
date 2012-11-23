@@ -2,15 +2,14 @@ package Domain;
 
 /**
  * Crated by: Team Lethargic
- *
+ * <p/>
  * This program lets two users play a 2 player game of TicTacToe
- *
+ * <p/>
  * Date: Jun 19, 2008
  * Time: 11:35:13 PM
- *
  */
 
-public class TicTac {
+public class TicTac implements TicTacInterface {
     int board[][];
     public static final int boardSize = 3;
     public static final int player1 = 1;
@@ -26,6 +25,7 @@ public class TicTac {
     }
 
     // Creates a new board
+    @Override
     public void newGame() {
         turnCount = 0;
         for (int i = 0; i < boardSize; i++)
@@ -40,23 +40,24 @@ public class TicTac {
                 j < boardSize && j >= 0 &&
                 turnCount < boardSize * boardSize &&
                 board[i][j] == 0 &&
-                !hasVictory();
+                !isVictory();
     }
 
     // Lets the player makes a move
+    @Override
     public boolean makeMove(int i, int j, int player) {
         if (canMakeMove(i, j) && player == whosTurn()) {
             board[i][j] = player;
-            if (hasVictory())
+            if (isVictory())
                 playerWhoWon = player;
-            else
-                turnCount++;
+            turnCount++;
             return true;
         }
         return false;
     }
 
     // Returns the player who has to make a move
+    @Override
     public int whosTurn() {
         return (turnCount % 2) + 1;
     }
@@ -101,18 +102,28 @@ public class TicTac {
         return false;
     }
 
-    public boolean hasVictory() {
+    //TODO Vanatar Comment
+    @Override
+    public boolean isVictory() {
         return checkDiagonalVictory() ||
                 checkHorizontalVictory() ||
                 checkVerticalVictory();
     }
 
+    //TODO Vanatar Comment
+    @Override
+    public boolean gameOver() {
+        return isVictory() || turnCount == boardSize * boardSize;
+    }
+
     // Returns the player who is victorious
+    @Override
     public int playerWhoWon() {
         return playerWhoWon;
     }
 
-    // Prints the board on the screen
+    //Outputs the board as a string
+    @Override
     public String displayBoard() {
         String out = "";
         for (int i = 0; i < boardSize; ) {

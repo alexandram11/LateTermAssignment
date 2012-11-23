@@ -1,24 +1,26 @@
-package test;
+package test.Presentation;
 
 /**
- * Created by IntelliJ IDEA.
- * User: hannes
+ * Created by: Team Lethargic
+ *
  * Date: Jun 19, 2008
  * Time: 11:35:13 PM
  * To change this template use File | Settings | File Templates.
  */
 
+import Domain.TicTac;
 import junit.framework.Test;
-import junit.framework.TestSuite;
 import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
 
 /**
+ * //TODO Vantar að bæta við testum til að prófa viðmót.
  * Example for Test Driven Development
  */
-public class UserTest extends TestCase {
+public class TicTacGuiTest extends TestCase {
 
-    public UserTest(String name) {
+    public TicTacGuiTest(String name) {
         super(name);
     }
 
@@ -30,11 +32,11 @@ public class UserTest extends TestCase {
         super.tearDown();
     }
 
-    public void testOneNameValuePair() throws Exception {
-
+    public void testEmptyConstuctor() throws Exception {
+        TicTac t = new TicTac();
     }
 
     public static Test suite() {
-        return new TestSuite(UserTest.class);
+        return new TestSuite(TicTacGuiTest.class);
     }
 }
