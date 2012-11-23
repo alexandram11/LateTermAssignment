@@ -1,4 +1,4 @@
-<target name="unitTests">
+<target name="TicTacTest">
     <!-- ======================================================== --> <!-- Global properties --> <!-- ======================================================== -->
     <property name="src.java" value="src"/>
     <property name="output.dir" value="classes"/>
@@ -13,9 +13,9 @@
         <classpath>
             <pathelement location="${classpath}"/>
             <pathelement location="${test.dir}"/>
-            <pathelement path="${test.dir}/TicTacTest.java"/>
+            <pathelement path="${test.dir}"/>
         </classpath>
-        <test name="src.test.domain.TicTacTest"/>
+        <test name="src.test.domain.TicTacTest" />
     </junit>
     <fail message="test failed" if="test.failure"/>
 </target>
