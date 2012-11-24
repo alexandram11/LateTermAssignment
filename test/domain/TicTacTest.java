@@ -1,4 +1,4 @@
-package test.domain;
+package domain;
 
 /**
  * Created by: Team Lethargic
@@ -31,7 +31,7 @@ public class TicTacTest extends TestCase {
      * test the empty constructor, that there´s no info in it
      * @throws Exception if somebody is still registered as the winner.
      */
-    public void testEmptyConstuctor() throws Exception {
+    public void testEmptyConstructor() throws Exception {
         TicTac t = new TicTac();
         assertFalse(t.isVictory());
         assertTrue(t.playerWhoWon()==0);

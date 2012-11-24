@@ -1,4 +1,4 @@
-<project name="ImportContentProcess" default="tests"
+<project name="TicTacBuildScript" default="tests"
          basedir=".">
     <!-- ======================================================== --> <!-- Global properties --> <!-- ======================================================== -->
     <property name="src.java" value="src"/>
