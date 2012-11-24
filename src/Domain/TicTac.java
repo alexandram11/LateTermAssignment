@@ -48,6 +48,7 @@ public class TicTac implements TicTacInterface
      * @param j y-axis of chosen square
      * @return True if the chosen square is empty and the game has not ended
      */
+    @Override
     public boolean canMakeMove(int i, int j)
     {
         return i < boardSize && i >= 0 &&
@@ -95,7 +96,7 @@ public class TicTac implements TicTacInterface
      *
      * @return True if any of possible winning combinations are fulfilled
      */
-    public boolean checkDiagonalVictory()
+    private boolean checkDiagonalVictory()
     {
         boolean hasVictory = true;
         for (int i = 0; i + 1 < boardSize; )
@@ -117,7 +118,7 @@ public class TicTac implements TicTacInterface
         return hasVictory;
     }
 
-    public boolean checkHorizontalVictory()
+    private boolean checkHorizontalVictory()
     {
         for (int i = 0; i < boardSize; i++)
             if (board[i][0] != 0 &&
@@ -127,7 +128,7 @@ public class TicTac implements TicTacInterface
         return false;
     }
 
-    public boolean checkVerticalVictory()
+    private boolean checkVerticalVictory()
     {
         for (int i = 0; i < boardSize; i++)
             if (board[0][i] != 0 &&
