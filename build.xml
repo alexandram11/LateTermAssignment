@@ -8,13 +8,13 @@
     <property name="jar.file" value="TicTac.jar"/>
     <property name="classpath" value="${lib.dir}/junit-4.4.jar"/>
     <!-- =====================Upload properties ================= -->
-	<property name="file.name" value="TicTac-${build-info.day-month-year}.jar" />
-	<property name="server.path" value="http://www.simnet.is/taranis/test" />
-	<tstamp prefix="build-info">
-		<format property="current-date" pattern="d-MMMM-yyyy" locale="en" />
-		<format property="current-time" pattern="hh:mm:ss a z" locale="en" />
-		<format property="day-month-year" pattern="dd-MM-yyyy" locale="en" />
-	</tstamp>
+    <property name="file.name" value="TicTac-${build-info.day-month-year}.jar"/>
+    <property name="server.path" value="http://www.simnet.is/taranis/test"/>
+    <tstamp prefix="build-info">
+        <format property="current-date" pattern="d-MMMM-yyyy" locale="en"/>
+        <format property="current-time" pattern="hh:mm:ss a z" locale="en"/>
+        <format property="day-month-year" pattern="dd-MM-yyyy" locale="en"/>
+    </tstamp>
     <!-- ======================================================== -->
     <target name="init" description="Prepare by creating output directories">
         <mkdir dir="${output.dir}"/>
@@ -39,13 +39,13 @@
                 <pathelement location="${classpath}"/>
                 <pathelement location="${dist.dir}/${jar.file}" />
             </classpath>
-            <test name="test.domain.TicTacTest"/>
-            <test name="test.Presentation.TicTacGuiTest"/>
+            <test name="Domain.TicTacTest"/>
+            <test name="Presentation.TicTacGuiTest"/>
         </junit>
     </target>
     <target name="deploy" depends="jar">
-         <!-- <copy file="${dist.dir}/${jar.file}" tofile="${server.path}/${file.name}"/> -->
-	</target>
+        <!-- <copy file="${dist.dir}/${jar.file}" tofile="${server.path}/${file.name}"/> -->
+    </target>
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
         <delete dir="${output.dir}"/>

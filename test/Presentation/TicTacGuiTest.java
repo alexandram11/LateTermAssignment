@@ -46,11 +46,11 @@ public class TicTacGuiTest extends TestCase {
 
     public void testButtonIcons() throws Exception {
         TicTacGUI gui = new TicTacGUI(ticTacLogic);
-        JButton button = new JButton(new ImageIcon("img/empty.png"));
+        JButton button = new JButton(gui.getEmptyIcon());
         gui.actionPerformed(new ActionEvent(button, 1, "btn_1_1"));
-        assertEquals(new ImageIcon("img/x.png").getImage(), ((ImageIcon) button.getIcon()).getImage());
+        assertEquals(gui.getXIcon().getImage(), ((ImageIcon) button.getIcon()).getImage());
         gui.actionPerformed(new ActionEvent(button, 1, "btn_1_2"));
-        assertEquals(new ImageIcon("img/o.png").getImage(), ((ImageIcon) button.getIcon()).getImage());
+        assertEquals(gui.getOIcon().getImage(), ((ImageIcon) button.getIcon()).getImage());
     }
 
     public void testBoardEmptyIcons() throws Exception {
@@ -58,7 +58,7 @@ public class TicTacGuiTest extends TestCase {
         JPanel board = (JPanel)gui.getComponents()[0];
         for (Component c : board.getComponents())
             if (c.getClass() == JButton.class)
-               assertEquals(((ImageIcon)((JButton)c).getIcon()).getImage(),new ImageIcon("img/empty.png").getImage());
+               assertEquals(((ImageIcon)((JButton)c).getIcon()).getImage(), gui.getEmptyIcon().getImage());
     }
 
     public static Test suite() {
