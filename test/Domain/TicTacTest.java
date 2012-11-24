@@ -1,4 +1,4 @@
-package DomainTest;
+package Domain;
 
 /**
  * Created by: Team Lethargic
@@ -7,7 +7,6 @@ package DomainTest;
  * Time: 11:35:13 PM
  */
 
-import Domain.TicTac;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

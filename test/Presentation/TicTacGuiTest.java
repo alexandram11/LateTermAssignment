@@ -1,4 +1,4 @@
-package PresentationTest;
+package Presentation;
 
 /**
  * Created by: Team Lethargic
@@ -9,7 +9,6 @@ package PresentationTest;
 
 import Domain.TicTac;
 import Domain.TicTacInterface;
-import Presentation.TicTacGUI;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

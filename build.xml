@@ -36,8 +36,8 @@
                 <pathelement location="${dist.dir}/${jar.file}" />
             </classpath>
             <formatter type="brief" usefile="false" />
-            <test name="DomainTest.TicTacTest"/>
-            <test name="PresentationTest.TicTacGuiTest"/>
+            <test name="Domain.TicTacTest"/>
+            <test name="Presentation.TicTacGuiTest"/>
         </junit>
     </target>
     <!-- ======================================================== -->
