@@ -40,8 +40,9 @@ public class TicTacGuiTest extends TestCase {
         super.tearDown();
     }
 
-    public void testEmptyConstuctor() throws Exception {
-        TicTac t = new TicTac();
+    public void testEmptyConstructor() throws Exception {
+        TicTacGUI gui = new TicTacGUI(ticTacLogic);
+        assertTrue(gui.getComponentCount() > 0);
     }
 
     public void testButtonIcons() throws Exception {
