@@ -8,12 +8,15 @@
     <property name="jar.file" value="TicTac.jar"/>
     <property name="classpath" value="${lib.dir}/junit-4.4.jar"/>
     <!-- =====================Upload properties ================= -->
-    <property name="ftp.username" value="taranis" />
+    <property name="ftp.server" value="ftp.simnet.is" />
+	<property name="ftp.userid" value="taranis" />
 	<property name="ftp.password" value="smef" />
-	<property name="ftp.hostname" value="ftp.simnet.is" />
-	<property name="ftp.port" value="21" /> 
-
-	<property name="ftp.folder" value="/test" />
+	<property name="ftp.remotedir" value="test/uploaded-wars/${project-name}/${build-info.day-month-year}" />
+	<tstamp prefix="build-info">
+		<format property="current-date" pattern="d-MMMM-yyyy" locale="en" />
+		<format property="current-time" pattern="hh:mm:ss a z" locale="en" />
+		<format property="day-month-year" pattern="dd-MM-yyyy" locale="en" />
+	</tstamp>
     <!-- ======================================================== -->
     <target name="init" description="Prepare by creating output directories">
         <mkdir dir="${output.dir}"/>
@@ -42,17 +45,17 @@
         </junit>
     </target>
     <target name="deploy" depends="jar">
-      <ftp server="${ftp.hostname}"
-       port="${ftp.port}"
-       remotedir="${ftp.folder}"
-       userid="${ftp.password}"
-       password="smef"
-       passive="yes"
-       binary="no">
-       <fileset dir="${dist.dir}">
-        <include name="${jar.file}"/>
-        </fileset>
-      </ftp>
+		<ftp 
+			server="${ftp.server}" remotedir="${ftp.remotedir}"
+			userid="${ftp.userid}" password="${ftp.password}"
+			action="mkdir" verbose="yes">
+		</ftp>
+		<ftp
+			server="${ftp.server}" remotedir="${ftp.remotedir}"
+			userid="${ftp.userid}" password="${ftp.password}"
+			action="send" verbose="yes" depends="yes">
+			<fileset file="${build.directory}/${jar.file.name}" />
+		</ftp>
 	</target>
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
