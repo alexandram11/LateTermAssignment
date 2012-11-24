@@ -7,14 +7,15 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
- * //TODO Vantar Comment og að bæta við logic fyrir TicTac leikin.
+ * This represents the GUI for the TicTac game.
+ * //TODO vantar að commenta.
  */
 public class TicTacGUI extends AbsTicTacGameGUI {
     public TicTacGUI(TicTacInterface Game) {
         super();
         gameLogic = Game;
     }
-
+    //TODO Þetta er til að taka á móti smellum úr viðmóti..
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("NEW GAME")) {
             lower.startNewGame();
