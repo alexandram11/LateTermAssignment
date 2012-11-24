@@ -43,7 +43,7 @@
         </junit>
     </target>
     <target name="deploy" depends="jar">
-         <copy file="${dist.dir}/${jar.file}" tofile="${server.path}/${file.name}"/>
+         <!-- <copy file="${dist.dir}/${jar.file}" tofile="${server.path}/${file.name}"/> -->
 	</target>
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
