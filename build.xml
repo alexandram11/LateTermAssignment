@@ -49,9 +49,9 @@
        password="smef"
        passive="yes"
        binary="no">
-        <!--<fileset dir="htdocs/manual">
-      <include name="**/*.html"/>
-        </fileset>-->
+       <fileset dir="${dist.dir}">
+        <include name="${jar.file}"/>
+        </fileset>
       </ftp>
 	</target>
     <!-- ======================================================== -->
