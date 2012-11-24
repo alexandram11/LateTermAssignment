@@ -1,11 +1,10 @@
-package Domain;
+package DomainTest;
 
 /**
  * Created by: Team Lethargic
  *
  * Date: Jun 19, 2008
  * Time: 11:35:13 PM
- * To change this template use File | Settings | File Templates.
  */
 
 import Domain.TicTac;
