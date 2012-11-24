@@ -1,5 +1,7 @@
 package Domain;
 
+import Presentation.PlayerPanel;
+
 /**
  * Crated by: Team Lethargic
  * <p/>
@@ -126,15 +128,8 @@ public class TicTac implements TicTacInterface {
     public String displayBoard() {
         String out = "";
         for (int i = 0; i < boardSize; ) {
-            for (int j = 0; j < boardSize; j++) {
-                if (board[i][j] == 0)
-                    out += "[ ]";
-                else if (board[i][j] == 1)
-                    out += "[X]";
-                else
-                    out += "[O]";
-                out += "";
-            }
+            for (int j = 0; j < boardSize; j++)
+                out += "[" + (board[i][j] == player1 ? "X" : board[i][j] == player2 ? "O" : " ") + "]";
             if (++i != boardSize)
                 out += "\n";
         }
