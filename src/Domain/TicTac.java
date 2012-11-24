@@ -43,7 +43,7 @@ public class TicTac implements TicTacInterface {
                 !isVictory();
     }
 
-    // Lets the player makes a move
+    // Lets the player make a move
     @Override
     public boolean makeMove(int i, int j, int player) {
         if (canMakeMove(i, j) && player == whosTurn()) {
@@ -102,7 +102,6 @@ public class TicTac implements TicTacInterface {
         return false;
     }
 
-    //TODO Vanatar Comment
     @Override
     public boolean isVictory() {
         return checkDiagonalVictory() ||
