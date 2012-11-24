@@ -21,9 +21,9 @@ public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener 
     protected TicTacInterface gameLogic;
 
     //X icon O and an empty icon loaded
-    ImageIcon xIcon = new ImageIcon("img/x.png");
-    ImageIcon oIcon = new ImageIcon("img/o.png");
-    ImageIcon emptyIcon = new ImageIcon("img/empty.png");
+    ImageIcon xIcon = new ImageIcon("src/Presentation/img/x.png");
+    ImageIcon oIcon = new ImageIcon("src/Presentation/img/o.png");
+    ImageIcon emptyIcon = new ImageIcon("src/Presentation/img/empty.png");
 
     public AbsTicTacGameGUI() {
         BoxLayout cMan = new BoxLayout(this, BoxLayout.PAGE_AXIS);
