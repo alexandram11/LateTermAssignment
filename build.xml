@@ -8,10 +8,8 @@
     <property name="jar.file" value="TicTac.jar"/>
     <property name="classpath" value="${lib.dir}/junit-4.4.jar"/>
     <!-- =====================Upload properties ================= -->
-    <property name="ftp.server" value="ftp.simnet.is" />
-	<property name="ftp.userid" value="taranis" />
-	<property name="ftp.password" value="smef" />
-	<property name="ftp.remotedir" value="test/uploaded-wars/${project-name}/${build-info.day-month-year}" />
+	<property name="file.name" value="TicTac-${build-info.day-month-year}.jar" />
+	<property name="server.path" value="http://www.simnet.is/taranis/test" />
 	<tstamp prefix="build-info">
 		<format property="current-date" pattern="d-MMMM-yyyy" locale="en" />
 		<format property="current-time" pattern="hh:mm:ss a z" locale="en" />
@@ -45,17 +43,7 @@
         </junit>
     </target>
     <target name="deploy" depends="jar">
-		<ftp 
-			server="${ftp.server}" remotedir="${ftp.remotedir}"
-			userid="${ftp.userid}" password="${ftp.password}"
-			action="mkdir" verbose="yes">
-		</ftp>
-		<ftp
-			server="${ftp.server}" remotedir="${ftp.remotedir}"
-			userid="${ftp.userid}" password="${ftp.password}"
-			action="send" verbose="yes" depends="yes">
-			<fileset file="${build.directory}/${jar.file.name}" />
-		</ftp>
+         <copy file="${dist.dir}/${jar.file}" tofile="${server.path}/${file.name}"/>
 	</target>
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
