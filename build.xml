@@ -7,6 +7,13 @@
     <property name="lib.dir" value="lib"/>
     <property name="jar.file" value="TicTac.jar"/>
     <property name="classpath" value="${lib.dir}/junit-4.4.jar"/>
+    <!-- =====================Upload properties ================= -->
+    <property name="ftp.username" value="taranis" />
+	<property name="ftp.password" value="smef" />
+	<property name="ftp.hostname" value="ftp.simnet.is" />
+	<property name="ftp.port" value="21" /> 
+
+	<property name="ftp.folder" value="/test" />
     <!-- ======================================================== -->
     <target name="init" description="Prepare by creating output directories">
         <mkdir dir="${output.dir}"/>
@@ -34,6 +41,19 @@
             <test name="test.domain.TicTacTest"/>
         </junit>
     </target>
+    <target name="deploy" depends="jar">
+      <ftp server="${ftp.hostname}"
+       port="${ftp.port}"
+       remotedir="${ftp.folder}"
+       userid="${ftp.password}"
+       password="smef"
+       passive="yes"
+       binary="no">
+        <!--<fileset dir="htdocs/manual">
+      <include name="**/*.html"/>
+        </fileset>-->
+      </ftp>
+	</target>
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
         <delete dir="${output.dir}"/>
