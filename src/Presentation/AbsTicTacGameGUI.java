@@ -8,12 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Sir.Thorgeir lap
- * Date: 22.11.2012
- * Time: 23:48
- *
- * @author Þorgeir Auðunn Karlsson.
+ * //TODO Gera Comments.
  */
 public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener {
     protected JButton[][] btns = new JButton[3][3];

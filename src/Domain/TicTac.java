@@ -9,8 +9,7 @@ package Domain;
  * Time: 11:35:13 PM
  */
 
-public class TicTac implements TicTacInterface
-{
+public class TicTac implements TicTacInterface {
     int board[][];
     public static final int boardSize = 3;
     public static final int player1 = 1;
@@ -21,8 +20,7 @@ public class TicTac implements TicTacInterface
     /**
      * Initializes the board
      */
-    public TicTac()
-    {
+    public TicTac() {
         board = new int[boardSize][boardSize];
         turnCount = 0;
         playerWhoWon = 0;
@@ -32,8 +30,7 @@ public class TicTac implements TicTacInterface
      * Creates a new board
      */
     @Override
-    public void newGame()
-    {
+    public void newGame() {
         turnCount = 0;
         for (int i = 0; i < boardSize; i++)
             for (int j = 0; j < boardSize; j++)
@@ -49,13 +46,11 @@ public class TicTac implements TicTacInterface
      * @return True if the chosen square is empty and the game has not ended
      */
     @Override
-    public boolean canMakeMove(int i, int j)
-    {
+    public boolean canMakeMove(int i, int j) {
         return i < boardSize && i >= 0 &&
                 j < boardSize && j >= 0 &&
-                turnCount < boardSize * boardSize &&
                 board[i][j] == 0 &&
-                !isVictory();
+                !gameOver();
     }
 
     /**
@@ -67,10 +62,8 @@ public class TicTac implements TicTacInterface
      * @return True if the move is possible
      */
     @Override
-    public boolean makeMove(int i, int j, int player)
-    {
-        if (canMakeMove(i, j) && player == whosTurn())
-        {
+    public boolean makeMove(int i, int j, int player) {
+        if (canMakeMove(i, j) && player == whosTurn()) {
             board[i][j] = player;
             if (isVictory())
                 playerWhoWon = player;
@@ -86,8 +79,7 @@ public class TicTac implements TicTacInterface
      * @return The player who has to make a move as int
      */
     @Override
-    public int whosTurn()
-    {
+    public int whosTurn() {
         return (turnCount % 2) + 1;
     }
 
@@ -96,8 +88,7 @@ public class TicTac implements TicTacInterface
      *
      * @return True if any of possible winning combinations are fulfilled
      */
-    private boolean checkDiagonalVictory()
-    {
+    private boolean checkDiagonalVictory() {
         boolean hasVictory = true;
         for (int i = 0; i + 1 < boardSize; )
             for (int j = 0; j + 1 < boardSize; )
@@ -118,8 +109,7 @@ public class TicTac implements TicTacInterface
         return hasVictory;
     }
 
-    private boolean checkHorizontalVictory()
-    {
+    private boolean checkHorizontalVictory() {
         for (int i = 0; i < boardSize; i++)
             if (board[i][0] != 0 &&
                     board[i][0] == board[i][1] &&
@@ -128,8 +118,7 @@ public class TicTac implements TicTacInterface
         return false;
     }
 
-    private boolean checkVerticalVictory()
-    {
+    private boolean checkVerticalVictory() {
         for (int i = 0; i < boardSize; i++)
             if (board[0][i] != 0 &&
                     board[0][i] == board[1][i] &&
@@ -140,11 +129,11 @@ public class TicTac implements TicTacInterface
 
     /**
      * Check if the player has won
+     *
      * @return True if the player fulfills any of the winning combinations
      */
     @Override
-    public boolean isVictory()
-    {
+    public boolean isVictory() {
         return checkDiagonalVictory() ||
                 checkHorizontalVictory() ||
                 checkVerticalVictory();
@@ -156,17 +145,15 @@ public class TicTac implements TicTacInterface
      * @return True if a player has won or there are no possible moves left
      */
     @Override
-    public boolean gameOver()
-    {
-        return isVictory() || turnCount == boardSize * boardSize;
+    public boolean gameOver() {
+        return turnCount == boardSize * boardSize || isVictory();
     }
 
     /**
      * @return The player who won
      */
     @Override
-    public int playerWhoWon()
-    {
+    public int playerWhoWon() {
         return playerWhoWon;
     }
 
@@ -174,11 +161,9 @@ public class TicTac implements TicTacInterface
      * @return The board as a string
      */
     @Override
-    public String displayBoard()
-    {
+    public String displayBoard() {
         String out = "";
-        for (int i = 0; i < boardSize; )
-        {
+        for (int i = 0; i < boardSize; ) {
             for (int j = 0; j < boardSize; j++)
                 out += "[" + (board[i][j] == player1 ? "X" : board[i][j] == player2 ? "O" : " ") + "]";
             if (++i != boardSize)

@@ -2,6 +2,7 @@
          basedir=".">
     <!-- ======================================================== --> <!-- Global properties --> <!-- ======================================================== -->
     <property name="src.java" value="src"/>
+    <property name="test.java" value="test"/>
     <property name="output.dir" value="classes"/>
     <property name="dist.dir" value="dist"/>
     <property name="lib.dir" value="lib"/>
@@ -17,6 +18,7 @@
     <!-- ======================================================== -->
     <target name="compile" depends="init" description="Compilation of all source files">
         <javac srcdir="${src.java}" destdir="${output.dir}" classpath="${classpath}"/>
+        <javac srcdir="${test.java}" destdir="${output.dir}" classpath="${classpath}"/>
     </target>
     <!-- ======================================================== -->
     <target name="jar" depends="compile" description="Create the JAR">
@@ -34,6 +36,7 @@
                 <pathelement location="${classpath}"/>
                 <pathelement location="${dist.dir}/${jar.file}" />
             </classpath>
+            <formatter type="brief" usefile="false" />
             <test name="Domain.TicTacTest"/>
             <test name="Presentation.TicTacGuiTest"/>
         </junit>

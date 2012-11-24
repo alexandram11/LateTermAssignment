@@ -5,7 +5,6 @@ package Presentation;
  *
  * Date: Jun 19, 2008
  * Time: 11:35:13 PM
- * To change this template use File | Settings | File Templates.
  */
 
 import Domain.TicTac;
@@ -20,7 +19,6 @@ import java.awt.event.ActionEvent;
 
 
 /**
- * //TODO Vantar að bæta við testum til að prófa viðmót.
  * Example for Test Driven Development
  */
 public class TicTacGuiTest extends TestCase {
