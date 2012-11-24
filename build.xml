@@ -8,6 +8,7 @@
     <property name="jar.file" value="TicTac.jar"/>
     <property name="classpath" value="${lib.dir}/junit-4.4.jar"/>
     <property name="deploy.dir" value="/home/ci/Deploy" />
+    <taskdef resource="checkstyletask.properties" classpathref="${lib.dir}/checkstyle-5.6-all.jar"/>
     <!-- ======================================================== -->
     <target name="init" description="Prepare by creating output directories">
         <mkdir dir="${output.dir}"/>
@@ -36,6 +37,15 @@
             <test name="Domain.TicTacTest"/>
             <test name="Presentation.TicTacGuiTest"/>
         </junit>
+    </target>
+    <!-- ====================== Checkstyle ====================== -->
+    <target name="checkstyle" description="Runs code inspection">
+        <mkdir dir="${deploy.dir}/checkstyle" />
+        <checkstyle config="${lib.dir}/sun_checks.xml" failOnViolation="false">
+        <fileset dir="${lib.dir}/checkstyle" includes="**/*.java"/>
+        <formater type="xml" toFile="${deploy.dir}/CheckStyle.xml" />
+        </checkstyle>
+        
     </target>
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
