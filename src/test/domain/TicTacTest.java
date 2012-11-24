@@ -13,11 +13,6 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-
-/**
- * //TODO Vantar að commenta fullt af þessum testum. (Hægt er að nota shift+ctr numpad'-' til að fá betri yfir sýn)
- * Example for Test Driven Development
- */
 public class TicTacTest extends TestCase {
 
     public TicTacTest(String name) {
@@ -32,10 +27,19 @@ public class TicTacTest extends TestCase {
         super.tearDown();
     }
 
+    /**
+     * test the empty constructor, that there´s no info in it
+     * @throws Exception if somebody is still registered as the winner.
+     */
     public void testEmptyConstuctor() throws Exception {
         TicTac t = new TicTac();
+        assertFalse(t.isVictory());
+        assertTrue(t.playerWhoWon()==0);
     }
-
+    /**
+     * tests if the function "NewGame" empties the board
+     * @throws Exception if player 2 wants to make a move
+     */
     public void testNewGame() throws Exception {
         TicTac t = new TicTac();
         assertTrue(t.makeMove(2, 0, TicTac.player1));
@@ -56,8 +60,7 @@ public class TicTacTest extends TestCase {
     }
 
     /**
-     * check the empty board, no O nor X from players
-     *
+     * check if board is really empty, no O nor X from players
      * @throws Exception test fails
      */
     public void testDisplayEmptyBoard() throws Exception {
@@ -68,6 +71,10 @@ public class TicTacTest extends TestCase {
         //System.out.println(s); //For debugging the test
     }
 
+    /**
+     * tests if board is really full
+     * @throws Exception if not
+     */
     public void testDisplayFullBoard() throws Exception {
         TicTac t = new TicTac();
         assertTrue(t.makeMove(0, 0, TicTac.player1));
@@ -251,8 +258,8 @@ public class TicTacTest extends TestCase {
     }
 
     /**
-     *
-     * @throws Exception
+     * tests whether game over works for both win and tie
+     * @throws Exception if not
      */
     public void testGameOver() throws Exception {
         TicTac t = new TicTac();

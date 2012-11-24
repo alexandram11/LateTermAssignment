@@ -7,7 +7,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
- * //TODO Vantar Comment og að bæta við logic fyrir TicTac leikin.
+ * This represents the GUI for the TicTac game.
+ *
  */
 public class TicTacGUI extends AbsTicTacGameGUI {
     public TicTacGUI(TicTacInterface Game) {
@@ -15,6 +16,10 @@ public class TicTacGUI extends AbsTicTacGameGUI {
         gameLogic = Game;
     }
 
+    /**
+     * This method is to get the actions (clicks) from the user
+     * @param e is the click coming in from user
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("NEW GAME")) {
             lower.startNewGame();
@@ -40,6 +45,9 @@ public class TicTacGUI extends AbsTicTacGameGUI {
         }
     }
 
+    /**
+     * this method cleans the board after a game finishes
+     */
     private void cleanUp() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -48,6 +56,9 @@ public class TicTacGUI extends AbsTicTacGameGUI {
         }
     }
 
+    /**
+     * new frame created and displayed
+     */
     private static void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("ButtonTest");
