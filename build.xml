@@ -45,7 +45,7 @@
     <target name="checkstyle" description="Runs code inspection">
         <mkdir dir="${deploy.dir}/checkstyle" />
         <checkstyle config="${lib.dir}/sun_checks.xml" failOnViolation="false">
-        <fileset dir="${lib.dir}/checkstyle" includes="**/*.java"/>
+        <fileset dir="${lib.dir}" />
         <formater type="xml" toFile="${deploy.dir}/CheckStyle.xml" />
         </checkstyle>
         
