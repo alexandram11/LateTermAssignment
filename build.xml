@@ -9,7 +9,7 @@
     <property name="jar.file" value="TicTac.jar"/>
     <property name="classpath" value="${lib.dir}/junit-4.4.jar"/>
     <property name="deploy.dir" value="/home/ci/Deploy" />
-    <taskdef resource="checkstyletask.properties" classpathref="/home/ci/libs/checkstyle-5.6-all.jar"/>
+    <taskdef resource="checkstyletask.properties" classpath="${lib.dir}/checkstyle-5.6-all.jar"/>
     <!-- ======================================================== -->
     <target name="init" description="Prepare by creating output directories">
         <mkdir dir="${output.dir}"/>
