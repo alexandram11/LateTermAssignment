@@ -8,11 +8,15 @@
     <property name="lib.dir" value="lib"/>
     <property name="jar.file" value="TicTac.jar"/>
     <property name="classpath" value="${lib.dir}/junit-4.4.jar"/>
-    <property name="deploy.dir" value="/home/ci/Deploy" />
+    <property name="deploy.dir" value="/home/ci/Deploy"/>
+
     <!-- ======================================================== -->
     <target name="init" description="Prepare by creating output directories">
         <mkdir dir="${output.dir}"/>
         <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${dist.dir}/build/"/>
+        <mkdir dir="${dist.dir}/build/instrumented"/>
+        <mkdir dir="${dist.dir}/build/reports"/>
     </target>
     <!-- ======================================================== -->
     <target name="compile" depends="init" description="Compilation of all source files">
@@ -26,23 +30,41 @@
                 <attribute name="Main-Class" value="Presentation.TicTacGUI"/>
             </manifest>
         </jar>
-        <copy file="${dist.dir}/${jar.file}" tofile="${deploy.dir}/${jar.file}" overwrite="true" />
+        <copy file="${dist.dir}/${jar.file}" tofile="${deploy.dir}/${jar.file}" overwrite="true"/>
     </target>
     <!-- ======================================================== -->
     <target name="tests" depends="jar" description="Runs the tests">
         <junit fork="true">
             <classpath>
                 <pathelement location="${classpath}"/>
-                <pathelement location="${dist.dir}/${jar.file}" />
+                <pathelement location="${dist.dir}/${jar.file}"/>
             </classpath>
-            <formatter type="brief" usefile="false" />
+            <formatter type="brief" usefile="false"/>
             <test name="Domain.TicTacTest"/>
             <test name="Presentation.TicTacGuiTest"/>
+            <jvmarg value="-Demma.coverage.out.file=${output.dir}/build/instrumented/coverage.emma"/>
+            <jvmarg value="-Demma.coverage.out.merge=false"/>
         </junit>
+        <emma enabled="true" verbosity="verbose">
+            <report sourcepath="${src.java}">
+                <fileset dir="${dist.dir}/build/instrumented" includes="*.emma"/>
+                <html outfile="${dist.dir}/build/reports/code_coverage.html"/>
+            </report>
+        </emma>
     </target>
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
         <delete dir="${output.dir}"/>
         <delete dir="${dist.dir}"/>
+        <mkdir dir="${dist.dir}/build/"/>
+        <mkdir dir="${dist.dir}/build/instrumented"/>
+        <mkdir dir="${dist.dir}/build/reports"/>
     </target>
+
+    <taskdef resource="emma_ant.properties">
+        <classpath>
+            <pathelement location="lib/emma.jar"/>
+            <pathelement location="lib/emma_ant.jar"/>
+        </classpath>
+    </taskdef>
 </project>
