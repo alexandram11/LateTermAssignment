@@ -46,7 +46,7 @@
         <mkdir dir="${deploy.dir}/checkstyle" />
         <checkstyle config="${lib.dir}/sun_checks.xml" failOnViolation="false">
         <fileset dir="${src.java}" includes="**/*.java"/>
-        <formater type="xml" toFile="${deploy.dir}/CheckStyle.xml" />
+        <formatter type="xml" toFile="${deploy.dir}/CheckStyle.xml" />
         </checkstyle>
         
     </target>
