@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 /**
- * //TODO vantar að gera Tests og að commenta.
+ * Represent the scoreboard for the TicTacTue.
  */
 public class PlayerPanel extends JPanel {
     protected JPanel[] playerPanels;

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 /**
- * //TODO Gera Comments.
+ * Represnets the Gui for the TicTacTue, Implements all but the ActionListener.
  */
 public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener {
     protected JButton[][] btns = new JButton[3][3];
@@ -51,6 +51,11 @@ public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener 
         add(lower);
     }
 
+    /**
+     * Draws and returns the O icon.
+     *
+     * @return ImageIcon, The O icon used on the board.
+     */
     public ImageIcon getOIcon() {
         if (oIcon == null) {
             int iconSize = 48;
@@ -67,6 +72,11 @@ public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener 
         return oIcon;
     }
 
+    /**
+     * Draws and returns the X icon.
+     *
+     * @return ImageIcon, The X icon used on the board.
+     */
     public ImageIcon getXIcon() {
         if (xIcon == null) {
             int iconSize = 48;
@@ -85,6 +95,11 @@ public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener 
         return xIcon;
     }
 
+    /**
+     * Draws and returns an emptyIcon
+     *
+     * @return ImageIcon, The Empty icon used on the board.
+     */
     public ImageIcon getEmptyIcon() {
         if (emptyIcon == null) {
             int iconSize = 48;
@@ -97,10 +112,20 @@ public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener 
         return emptyIcon;
     }
 
+    /**
+     * The the logic unit used by the the gui.
+     *
+     * @return The logic unit used by this gui, a class that implements the TicTacInterface,
+     */
     public TicTacInterface getGameLogic() {
         return gameLogic;
     }
 
+    /**
+     * Used to dependency inject the logic into the gui.
+     *
+     * @param gameLogic The the logic unit used by the the gui.
+     */
     public void setGameLogic(TicTacInterface gameLogic) {
         this.gameLogic = gameLogic;
     }
