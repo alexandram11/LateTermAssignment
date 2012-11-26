@@ -7,16 +7,23 @@
     <property name="dist.dir" value="dist"/>
     <property name="lib.dir" value="lib"/>
     <property name="jar.file" value="TicTac.jar"/>
+    <property name="instrumented.dir" value="${dist.dir}/instrumented"/>
+    <property name="reports.dir" value="${dist.dir}/reports"/>
     <property name="classpath" value="${lib.dir}/junit-4.4.jar"/>
     <property name="deploy.dir" value="/home/ci/Deploy"/>
     <taskdef resource="checkstyletask.properties" classpath="${lib.dir}/checkstyle-5.6-all.jar"/>
--    <!-- ======================================================== -->
+    <path id="emma.lib">
+        <pathelement location="${lib.dir}/emma.jar"/>
+        <pathelement location="${lib.dir}/emma_ant.jar"/>
+    </path>
+    <path id="junit.lib">
+        <pathelement location="${lib.dir}/junit-4.4.jar"/>
+    </path>
+    <taskdef resource="emma_ant.properties" classpathref="emma.lib"/>
+    <!-- ======================================================== -->
     <target name="init" description="Prepare by creating output directories">
         <mkdir dir="${output.dir}"/>
         <mkdir dir="${dist.dir}"/>
-        <mkdir dir="${dist.dir}/build/"/>
-        <mkdir dir="${dist.dir}/build/instrumented"/>
-        <mkdir dir="${dist.dir}/build/reports"/>
     </target>
     <!-- ======================================================== -->
     <target name="compile" depends="init" description="Compilation of all source files">
@@ -32,48 +39,58 @@
         </jar>
         <copy file="${dist.dir}/${jar.file}" tofile="${deploy.dir}/${jar.file}" overwrite="true"/>
     </target>
+
+
+    <target name="instrument" depends="compile">
+        <mkdir dir="${instrumented.dir}"/>
+        <mkdir dir="${reports.dir}/coverage"/>
+        <emma enabled="true">
+            <instr instrpath="${output.dir}" destdir="${instrumented.dir}"
+                   metadatafile="${reports.dir}/coverage/metadata.emma" merge="true" mode="copy">
+                <filter excludes="*Test*"/>
+            </instr>
+        </emma>
+    </target>
     <!-- ======================================================== -->
-    <target name="tests" depends="jar" description="Runs the tests">
-        <junit fork="true">
+    <target name="tests" depends="instrument" description="Runs the tests">
+        <mkdir dir="${reports.dir}/junit"/>
+        <junit printsummary="yes" haltonfailure="no" showoutput="yes" fork="yes">
+            <jvmarg value="-XX:-UseSplitVerifier"/>
             <classpath>
-                <pathelement location="${classpath}"/>
-                <pathelement location="${dist.dir}/${jar.file}"/>
+                <path refid="emma.lib"/>
+                <path refid="junit.lib"/>
+                <path location="${instrumented.dir}"/>
+                <path location="${output.dir}"/>
             </classpath>
-            <formatter type="brief" usefile="false"/>
-            <test name="Domain.TicTacTest"/>
-            <test name="Presentation.TicTacGuiTest"/>
-            <jvmarg value="-Demma.coverage.out.file=${output.dir}/build/instrumented/coverage.emma"/>
-            <jvmarg value="-Demma.coverage.out.merge=false"/>
+
+            <formatter type="xml"/>
+
+            <batchtest todir="${reports.dir}/junit">
+                <fileset dir="${test.java}" includes="*/*Test.java"/>
+            </batchtest>
+        <jvmarg value="-Demma.coverage.out.file=${reports.dir}/coverage/coverage.emma" />
+        <jvmarg value="-Demma.coverage.out.merge=true" />
         </junit>
         <emma enabled="true" verbosity="verbose">
             <report sourcepath="${src.java}">
-                <fileset dir="${dist.dir}/build/instrumented" includes="*.emma"/>
-                <html outfile="${dist.dir}/build/reports/code_coverage.html"/>
+                <fileset dir="${reports.dir}/coverage" includes="*.emma"/>
+                <html outfile="${reports.dir}/coverage/coverage.html"/>
             </report>
         </emma>
     </target>
     <!-- ====================== Checkstyle ====================== -->
     <target name="checkstyle" description="Runs code inspection">
-        <mkdir dir="${deploy.dir}/checkstyle" />
+        <mkdir dir="${deploy.dir}/checkstyle"/>
         <checkstyle config="${lib.dir}/sun_checks.xml" failOnViolation="false">
-        <fileset dir="${src.java}" includes="**/*.java"/>
-        <formatter type="xml" toFile="${deploy.dir}/CheckStyle.xml" />
+            <fileset dir="${src.java}" includes="**/*.java"/>
+            <formatter type="xml" toFile="${deploy.dir}/CheckStyle.xml" />
         </checkstyle>
-        
+        <style in="${deploy.dir}/CheckStyle.xml" out="${deploy.dir}/CheckStyle_report.html" style="checkstyle.xsl"/>
     </target>
     <!-- ======================================================== -->
     <target name="clean" description="Delete all generated files">
         <delete dir="${output.dir}"/>
         <delete dir="${dist.dir}"/>
-        <mkdir dir="${dist.dir}/build/"/>
-        <mkdir dir="${dist.dir}/build/instrumented"/>
-        <mkdir dir="${dist.dir}/build/reports"/>
     </target>
 
-    <taskdef resource="emma_ant.properties">
-        <classpath>
-            <pathelement location="lib/emma.jar"/>
-            <pathelement location="lib/emma_ant.jar"/>
-        </classpath>
-    </taskdef>
 </project>
