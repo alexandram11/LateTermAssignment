@@ -1,5 +1,4 @@
 ﻿**** ReadMe LateTermAssignment ****
-//TODO Vantar að skíra þetta eitthvað betra og bæta við okkar lýsingu.
 
 Created by: Team Lethargic.
 Alexandra Mahlmann, Aron Mar Þórleifsson, Bjarmi Árdal Bergsteinsson, Carsten Petersen,
