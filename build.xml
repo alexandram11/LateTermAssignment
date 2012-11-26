@@ -79,6 +79,7 @@
             </report>
         </emma>
         <copy file="${reports.dir}/coverage/coverage.html" tofile="${deploy.dir}/Coverage.html" overwrite="true"/>
+        <echo message="##teamcity[importData type='dotNetCoverage' tool='dotcover' path='${reports.dir}/coverage/coverage.emma']"></echo>
     </target>
     <!-- ====================== Checkstyle ====================== -->
     <target name="checkstyle" description="Runs code inspection">
