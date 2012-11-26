@@ -79,7 +79,7 @@
             </report>
         </emma>
         <copy file="${reports.dir}/coverage/coverage.html" tofile="${deploy.dir}/Coverage.html" overwrite="true"/>
-        <copy todir="${deploy.dir}" overwrite="true">
+        <copy todir="${deploy.dir}/_files" overwrite="true">
             <fileset dir="${reports.dir}/coverage/_files"/>
         </copy>
         <!--  <echo message="##teamcity[importData type='dotNetCoverage' tool='dotcover' path='${reports.dir}/coverage/coverage.emma']"></echo>-->
