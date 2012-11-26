@@ -7,6 +7,7 @@
     <property name="dist.dir" value="dist"/>
     <property name="lib.dir" value="lib"/>
     <property name="jar.file" value="TicTac.jar"/>
+    <property name="" value="TicTac.jar"/>
     <property name="instrumented.dir" value="${dist.dir}/instrumented"/>
     <property name="reports.dir" value="${dist.dir}/reports"/>
     <property name="classpath" value="${lib.dir}/junit-4.4.jar"/>
@@ -46,7 +47,7 @@
         <mkdir dir="${reports.dir}/coverage"/>
         <emma enabled="true">
             <instr instrpath="${output.dir}" destdir="${instrumented.dir}"
-                   metadatafile="${reports.dir}/coverage/metadata.emma" merge="true" mode="copy">
+                   metadatafile="${reports.dir}/coverage/coverage.emma" merge="true" mode="copy">
                 <filter excludes="*Test*"/>
             </instr>
         </emma>
@@ -77,6 +78,7 @@
                 <html outfile="${reports.dir}/coverage/coverage.html"/>
             </report>
         </emma>
+        <copy file="${reports.dir}/coverage/coverage.html" tofile="${deploy.dir}/Coverage.html" overwrite="true"/>
     </target>
     <!-- ====================== Checkstyle ====================== -->
     <target name="checkstyle" description="Runs code inspection">
