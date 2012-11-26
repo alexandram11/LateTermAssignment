@@ -78,7 +78,7 @@
                 <html outfile="${reports.dir}/coverage/coverage.html"/>
             </report>
         </emma>
-        <copy file="${reports.dir}/coverage/coverage.html" tofile="${deploy.dir}/Coverage.html" overwrite="true"/>
+        <copy file="${reports.dir}/coverage/coverage.html" tofile="${deploy.dir}/coverage.html" overwrite="true"/>
         <copy todir="${deploy.dir}/_files" overwrite="true">
             <fileset dir="${reports.dir}/coverage/_files"/>
         </copy>
