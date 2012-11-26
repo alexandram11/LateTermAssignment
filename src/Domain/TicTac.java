@@ -4,24 +4,34 @@ package Domain;
  * Crated by: Team Lethargic
  * <p/>
  * This program lets two users play a 2 player game of TicTacToe
- * <p/>
+ * <p/><
  * Date: Jun 19, 2008
  * Time: 11:35:13 PM
  */
 
 public class TicTac implements TicTacInterface {
-    int board[][];
-    public static final int boardSize = 3;
-    public static final int player1 = 1;
-    public static final int player2 = 2;
+    public static final int BOARDSIZE = 3;
+    public static final int PLAYER1 = 1;
+    public static final int PLAYER2 = 2;
+    /**
+     * Represents the board, each index represents a square on the board
+     * and the value is either 0 for neither player occupy or the value of the player.
+     */
+    private int board[][];
+    /**
+     * Represents what turn it is.
+     */
     private int turnCount;
+    /**
+     * Represents the player who won, it is only change if someone wins.
+     */
     private int playerWhoWon;
 
     /**
      * Initializes the board
      */
     public TicTac() {
-        board = new int[boardSize][boardSize];
+        board = new int[BOARDSIZE][BOARDSIZE];
         turnCount = 0;
         playerWhoWon = 0;
     }
@@ -32,8 +42,8 @@ public class TicTac implements TicTacInterface {
     @Override
     public void newGame() {
         turnCount = 0;
-        for (int i = 0; i < boardSize; i++)
-            for (int j = 0; j < boardSize; j++)
+        for (int i = 0; i < BOARDSIZE; i++)
+            for (int j = 0; j < BOARDSIZE; j++)
                 board[i][j] = 0;
         playerWhoWon = 0;
     }
@@ -47,8 +57,8 @@ public class TicTac implements TicTacInterface {
      */
     @Override
     public boolean canMakeMove(int i, int j) {
-        return i < boardSize && i >= 0 &&
-                j < boardSize && j >= 0 &&
+        return i < BOARDSIZE && i >= 0 &&
+                j < BOARDSIZE && j >= 0 &&
                 board[i][j] == 0 &&
                 !gameOver();
     }
@@ -90,27 +100,27 @@ public class TicTac implements TicTacInterface {
      */
     private boolean checkDiagonalVictory() {
         boolean hasVictory = true;
-        for (int i = 0; i + 1 < boardSize; )
-            for (int j = 0; j + 1 < boardSize; )
+        for (int i = 0; i + 1 < BOARDSIZE; )
+            for (int j = 0; j + 1 < BOARDSIZE; )
                 if (board[i][j] != board[++i][++j])
                     hasVictory = false;
         if (board[0][0] != 0 && hasVictory)
             return true;
 
         hasVictory = true;
-        for (int i = 0; i + 1 < boardSize; )
-            for (int j = boardSize - 1; j > 0; )
+        for (int i = 0; i + 1 < BOARDSIZE; )
+            for (int j = BOARDSIZE - 1; j > 0; )
                 if (board[i][j] != board[++i][--j])
                     hasVictory = false;
 
-        if (board[0][boardSize - 1] == 0 && hasVictory)
+        if (board[0][BOARDSIZE - 1] == 0 && hasVictory)
             hasVictory = false;
 
         return hasVictory;
     }
 
     private boolean checkHorizontalVictory() {
-        for (int i = 0; i < boardSize; i++)
+        for (int i = 0; i < BOARDSIZE; i++)
             if (board[i][0] != 0 &&
                     board[i][0] == board[i][1] &&
                     board[i][1] == board[i][2])
@@ -119,7 +129,7 @@ public class TicTac implements TicTacInterface {
     }
 
     private boolean checkVerticalVictory() {
-        for (int i = 0; i < boardSize; i++)
+        for (int i = 0; i < BOARDSIZE; i++)
             if (board[0][i] != 0 &&
                     board[0][i] == board[1][i] &&
                     board[1][i] == board[2][i])
@@ -146,7 +156,7 @@ public class TicTac implements TicTacInterface {
      */
     @Override
     public boolean gameOver() {
-        return turnCount == boardSize * boardSize || isVictory();
+        return turnCount == BOARDSIZE * BOARDSIZE || isVictory();
     }
 
     /**
@@ -163,10 +173,10 @@ public class TicTac implements TicTacInterface {
     @Override
     public String displayBoard() {
         String out = "";
-        for (int i = 0; i < boardSize; ) {
-            for (int j = 0; j < boardSize; j++)
-                out += "[" + (board[i][j] == player1 ? "X" : board[i][j] == player2 ? "O" : " ") + "]";
-            if (++i != boardSize)
+        for (int i = 0; i < BOARDSIZE; ) {
+            for (int j = 0; j < BOARDSIZE; j++)
+                out += "[" + (board[i][j] == PLAYER1 ? "X" : board[i][j] == PLAYER2 ? "O" : " ") + "]";
+            if (++i != BOARDSIZE)
                 out += "\n";
         }
         return out;

@@ -15,6 +15,7 @@ public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener 
     protected JPanel upper;
     protected PlayerPanel lower;
     protected TicTacInterface gameLogic;
+    protected int BoardSize = 3;
 
     //X icon O and an empty icon loaded
     ImageIcon xIcon;
@@ -28,13 +29,13 @@ public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener 
         BoxLayout cMan = new BoxLayout(this, BoxLayout.PAGE_AXIS);
         setLayout(cMan);
 
-        GridLayout lMan = new GridLayout(3, 3);
+        GridLayout lMan = new GridLayout(BoardSize, BoardSize);
         upper = new JPanel(lMan);
 
         lower = new PlayerPanel(this);
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < BoardSize; i++) {
+            for (int j = 0; j < BoardSize; j++) {
                 btns[i][j] = new JButton("", emptyIcon);
                 btns[i][j].setVerticalTextPosition(AbstractButton.CENTER);
                 btns[i][j].setHorizontalTextPosition(AbstractButton.CENTER);
@@ -52,12 +53,13 @@ public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener 
 
     public ImageIcon getOIcon() {
         if (oIcon == null) {
-            BufferedImage img = new BufferedImage(48, 48, BufferedImage.TYPE_INT_RGB);
+            int iconSize = 48;
+            BufferedImage img = new BufferedImage(iconSize, iconSize, BufferedImage.TYPE_INT_RGB);
             Graphics g = img.getGraphics();
             g.setColor(Color.white);
-            g.fillRect(0, 0, 48, 48);
+            g.fillRect(0, 0, iconSize, iconSize);
             g.setColor(Color.BLACK);
-            g.fillOval(0, 0, 48, 48);
+            g.fillOval(0, 0, iconSize, iconSize);
             g.setColor(Color.white);
             g.fillOval(9, 9, 30, 30);
             oIcon = new ImageIcon(img);
@@ -67,15 +69,16 @@ public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener 
 
     public ImageIcon getXIcon() {
         if (xIcon == null) {
-            BufferedImage img = new BufferedImage(48, 48, BufferedImage.TYPE_INT_RGB);
+            int iconSize = 48;
+            BufferedImage img = new BufferedImage(iconSize, iconSize, BufferedImage.TYPE_INT_RGB);
             Graphics g = img.getGraphics();
             g.setColor(Color.white);
-            g.fillRect(0, 0, 48, 48);
+            g.fillRect(0, 0, iconSize, iconSize);
             for (int k = 0; k < 4; k++) {
                 g.setColor(Color.BLACK);
-                g.drawLine(48 - k, 48, 0, k);
+                g.drawLine(iconSize - k, iconSize, 0, k);
                 g.setColor(Color.BLACK);
-                g.drawLine(0, 48 - k, 48 - k, 0);
+                g.drawLine(0, iconSize - k, iconSize - k, 0);
             }
             xIcon = new ImageIcon(img);
         }
@@ -84,10 +87,11 @@ public abstract class AbsTicTacGameGUI extends JPanel implements ActionListener 
 
     public ImageIcon getEmptyIcon() {
         if (emptyIcon == null) {
-            BufferedImage img = new BufferedImage(48, 48, BufferedImage.TYPE_INT_RGB);
+            int iconSize = 48;
+            BufferedImage img = new BufferedImage(iconSize, iconSize, BufferedImage.TYPE_INT_RGB);
             Graphics g = img.getGraphics();
             g.setColor(Color.white);
-            g.fillRect(0, 0, 48, 48);
+            g.fillRect(0, 0, iconSize, iconSize);
             emptyIcon = new ImageIcon(img);
         }
         return emptyIcon;
