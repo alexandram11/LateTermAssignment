@@ -69,8 +69,8 @@
             <batchtest todir="${reports.dir}/junit">
                 <fileset dir="${test.java}" includes="*/*Test.java"/>
             </batchtest>
-        <jvmarg value="-Demma.coverage.out.file=${reports.dir}/coverage/coverage.emma" />
-        <jvmarg value="-Demma.coverage.out.merge=true" />
+            <jvmarg value="-Demma.coverage.out.file=${reports.dir}/coverage/coverage.emma"/>
+            <jvmarg value="-Demma.coverage.out.merge=true"/>
         </junit>
         <emma enabled="true" verbosity="verbose">
             <report sourcepath="${src.java}">
@@ -79,14 +79,14 @@
             </report>
         </emma>
         <copy file="${reports.dir}/coverage/coverage.html" tofile="${deploy.dir}/Coverage.html" overwrite="true"/>
-        <echo message="##teamcity[importData type='dotNetCoverage' tool='dotcover' path='${reports.dir}/coverage/coverage.emma']"></echo>
+        <!--  <echo message="##teamcity[importData type='dotNetCoverage' tool='dotcover' path='${reports.dir}/coverage/coverage.emma']"></echo>-->
     </target>
     <!-- ====================== Checkstyle ====================== -->
     <target name="checkstyle" description="Runs code inspection">
         <mkdir dir="${deploy.dir}/checkstyle"/>
         <checkstyle config="${lib.dir}/sun_checks.xml" failOnViolation="false">
             <fileset dir="${src.java}" includes="**/*.java"/>
-            <formatter type="xml" toFile="${deploy.dir}/CheckStyle.xml" />
+            <formatter type="xml" toFile="${deploy.dir}/CheckStyle.xml"/>
         </checkstyle>
         <style in="${deploy.dir}/CheckStyle.xml" out="${deploy.dir}/CheckStyle_report.html" style="checkstyle.xsl"/>
     </target>
