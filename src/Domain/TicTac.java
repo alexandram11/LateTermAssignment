@@ -37,7 +37,7 @@ public class TicTac implements TicTacInterface {
     }
 
     /**
-     * Creates a new board
+     * Creates a new board.
      */
     @Override
     public void newGame() {
